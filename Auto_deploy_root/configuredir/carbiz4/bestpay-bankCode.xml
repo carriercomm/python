@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bankCode-mapping>
+    <banks>
+    <bank name="中国人民银行" code="860000"/>
+    <bank name="中国邮政储蓄银行" code="866000"/>
+    <bank name="中国银行" code="866100"/>
+    <bank name="中国工商银行" code="866200"/>
+    <bank name="中国农业银行" code="866300"/>
+    <bank name="中国建设银行" code="866500"/>
+    <bank name="广发银行" code="866800"/>
+    <bank name="交通银行" code="866400"/>
+    <bank name="中国民生银行" code="866600"/>
+    <bank name="招商银行" code="866900"/>
+    <bank name="广州银行" code="867000"/>
+    <bank name="上海浦发银行" code="867100"/>
+    <bank name="光大银行" code="867200"/>
+    <bank name="中信银行" code="867400"/>
+    <bank name="兴业银行" code="867600"/>
+    <bank name="广州农商" code="866700"/>
+    <bank name="北京银行" code="865900"/>
+    <bank name="东莞农信" code="867319"/>
+    <bank name="华夏银行" code="865800"/>
+    <bank name="深圳发展银行" code="865600"/>
+    <bank name="平安银行" code="865700"/>
+    <bank name="东莞农商" code="867800"/>
+    <bank name="东莞银行" code="867900 "/>
+    <bank name="广东农信 " code="867300 "/>
+    </banks>
+</bankCode-mapping>

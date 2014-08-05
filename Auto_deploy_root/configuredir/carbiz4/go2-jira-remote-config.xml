@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<jiraclient>
+    <!--=============================服务端地址信息================================-->
+    
+	<jiraConfig>
+      <!--  <url>http://10.68.14.221:8180/jira/jiraissueservlet</url>-->
+        
+		<url>http://task4.baoxian.in/jira/jiraissueservlet</url>
+        
+		<username>jira_carbiz3</username>
+        
+		<jiraRouteUrl>http://task4.baoxian.in/jiraRouteServer/jiraRouteSearch</jiraRouteUrl>
+    
+	</jiraConfig>
+
+    <!--=============================client 配置项================================-->
+    
+	<clientConfig name="go2">
+        <!--ICE STORM-->
+       
+		<ice enable="false">
+            
+			<configFilePath>/data/www/ins_share/config/go2/iceStorm.config</configFilePath>
+        
+		</ice>
+        <!--任务调度-->
+        <taskDispath enable="false">
+            <xmppConfigFilePath></xmppConfigFilePath>
+            <processor></processor>
+            <jiraJid></jiraJid>
+        </taskDispath>
+        <!--key mapping-->
+        <keyMapping>
+            <systemKeyMappingFilePath></systemKeyMappingFilePath>
+        </keyMapping>
+    </clientConfig>
+
+    <listeners port="9995">
+				<!--b2b交易站接收jira核保成功事件 -->
+
+    </listeners>
+
+    <jiraActions>
+        <!--                       报价                   -->
+        <action type="2_auto_start" jiraactionname="开始执行"/>
+        <action type="c_human_start" jiraactionname="人工任务处理"/>
+        <action type="E_human_auto_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="D_human_reopen" jiraactionname="需修正或补充报价信息"/>
+        <action type="B_human_quote_success" jiraactionname="报价成功"/>
+        <action type="C_human_quote_fail" jiraactionname="无法报价"/>
+        <action type="A_human_insured" jiraactionname="直接核保通过"/>
+        <action type="3_auto_restart" jiraactionname="执行失败重新调度"/>
+        <action type="4_auto_to_human" jiraactionname="执行失败转人工处理"/>
+        <action type="5_need_verify" jiraactionname="需修正或补充报价信息"/>
+        <!--<action type="6_auto_user_machine" jiraactionname="识别用户是否为机器人"/>-->
+        <action type="6_auto_need_verify_data" jiraactionname="补充校验信息"/>
+        <action type="8_auto_quote_success" jiraactionname="报价成功"/>
+        <action type="9_auto_quote_fail" jiraactionname="无法报价"/>
+        <action type="7_auto_insured" jiraactionname="直接核保通过"/>
+        <action type="d_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="b_close" jiraactionname="关闭报价"/>
+        <action type="human_check" jiraactionname="初审"/>
+        <action type="human_check_success" jiraactionname="初审通过"/>
+        <action type="human_confirm_quote" jiraactionname="人工干预报价"/>
+
+        <!--                       核保                     -->
+        <action type="insure_start" jiraactionname="开始执行"/>
+        <action type="human_insure_start" jiraactionname="人工任务处理"/>
+        <action type="human_auto_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="human_reopen" jiraactionname="需修正或补充核保信息"/>
+        <action type="human_insure_success" jiraactionname="核保成功"/>
+        <action type="human_insure_fail" jiraactionname="无法承保"/>
+        <action type="auto_insure_restart" jiraactionname="执行失败重新调度"/>
+        <action type="auto_insure_to_human" jiraactionname="执行失败转人工处理"/>
+        <action type="auto_insure_need_verify" jiraactionname="需修正或补充核保信息"/>
+        <action type="auto_insure_success" jiraactionname="核保成功"/>
+        <action type="auto_insure_fail" jiraactionname="无法承保"/>
+        <action type="insure_restart" jiraactionname="重新调度自动执行"/>
+        <action type="insure_close" jiraactionname="关闭核保"/>
+        <action type="insure_confirm" jiraactionname="确认核保成功"/>
+        <action type="auto_need_verify_data" jiraactionname="补充校验信息"/>
+        <action type="human_confirm_insure_error" jiraactionname="人工干预核保失败"/>
+
+
+		<!--                       支付                    -->
+        <action type="p_success" jiraactionname="支付成功"/>
+        <action type="p_failure" jiraactionname="放弃支付"/>
+        <action type="p_revoke" jiraactionname="撤销支付"/>
+        <action type="p_close" jiraactionname="关闭支付"/>
+        <action type="p_reply_start" jiraactionname="开始支付号申请"/>
+        <action type="p_reply_success" jiraactionname="支付号申请成功"/>
+        <action type="p_reply_fail" jiraactionname="支付号申请失败"/>
+        <!-- 承保 -->
+        <action type="underwrite_revoke" jiraactionname="撤销承保"/>
+        <action type="underwrite_success" jiraactionname="承保成功"/>
+        <action type="underwrite_abandonment" jiraactionname="放弃承保"/>
+        <action type="underwrite_close" jiraactionname="关闭承保"/>
+        <action type="dataEntry_start" jiraactionname="开始录单"/>
+        <action type="dataEntry_complete" jiraactionname="录单完成"/>
+        <action type="underwrite_auto_start" jiraactionname="开始自动处理"/>
+        <!-- 配送 -->
+        <action type="print_insPolicy_success" jiraactionname="打单成功"/>
+        <action type="deliver_start" jiraactionname="开始配送"/>
+        <action type="deliver_revoke" jiraactionname="撤销配送"/>
+        <action type="delivery_success" jiraactionname="配送成功"/>
+        <action type="delivery_abandonment" jiraactionname="放弃配送"/>
+        <action type="delivery_close" jiraactionname="关闭配送"/>
+        <!-- OCR影像识别 -->
+        <action type="ocr_waitForOcrProcessing" jiraactionname="待OCR处理"/>
+        <action type="ocr_waitForManualProcessing" jiraactionname="待人工审核"/>
+        <action type="ocr_giveUpProcessing" jiraactionname="放弃处理"/>
+        <action type="ocr_processComplete" jiraactionname="处理完成"/>
+        <!--多方初审-->
+        <action type="verify_toManualProcess" jiraactionname="人工任务处理"/>
+        <action type="verify_toOcrProcess" jiraactionname="OCR识别"/>
+        <action type="verify_success" jiraactionname="初审通过"/>
+        <action type="verify_unable" jiraactionname="无法承保"/>
+        <action type="verify_reopen" jiraactionname="重新识别"/>
+        <action type="verify_toModify" jiraactionname="返回修改"/>
+        <action type="verify_changeToCallCenter" jiraactionname="转呼叫"/>
+        <action type="verify_ocrFinished" jiraactionname="识别完成"/>
+        <action type="verify_resubmit" jiraactionname="重新提交初审"/>
+        <action type="verify_close" jiraactionname="关闭初审"/>
+    </jiraActions>
+</jiraclient>

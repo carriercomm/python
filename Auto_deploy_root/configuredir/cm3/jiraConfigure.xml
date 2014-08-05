@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<jiraclient>
+    <remoteproviders>
+        <provider>
+            <key>net</key>
+            <class>com.baoxian.jira.common.JiraRemoteImpl</class>
+            <properties>
+                <url>http://task.baoxan.net:8080/jiraissueservlet</url>
+                <username>mayi</username>
+            </properties>
+        </provider>
+        <provider>
+            <key>org</key>
+            <class>com.baoxian.jira.common.JiraRemoteImpl</class>
+            <properties>
+                <url>http://task.baoxan.org:8080/jiraissueservlet</url>
+                <username>mayi</username>
+            </properties>
+        </provider>
+        <provider>
+            <key>com</key>
+            <class>com.baoxian.jira.common.JiraRemoteImpl</class>
+            <properties>
+                <url>http://{{jira3_url}}/jira/jiraissueservlet</url>
+                <username>jira_cm3</username>
+            </properties>
+        </provider>
+         <provider>
+            <key>com2</key>
+            <class>com.baoxian.jira.common.JiraRemoteImpl</class>
+            <properties>
+                <url>http://task2.baoxian.in/jira/jiraissueservlet</url>
+                <username>mayi</username>
+            </properties>
+        </provider>
+	<provider>
+            <key>com3</key>
+            <class>com.baoxian.jira.common.JiraRemoteImpl</class>
+            <properties>
+                <url>http://task3.baoxian.in/jira/jiraissueservlet</url>
+                <username>mayi</username>
+            </properties>
+        </provider>
+    </remoteproviders>
+
+    <jirameta>
+        <meta type="verify" key="BBCAR/多方初审任务"/>
+        <meta type="quote" key="BBCAR/车险报价任务"/>
+        <meta type="payment" key="BBCAR/车险支付任务"/>
+        <meta type="secondPayment" key="BBCAR/车险二次支付任务"/>
+        <meta type="insure" key="BBCAR/车险核保任务"/>
+        <meta type="underwrite" key="BBCAR/车险承保任务"/>
+        <meta type="delivery" key="BBCAR/车险配送任务"/>
+        <meta type="verificationWt" key="BBCAR/资料核实工单"/>
+        <meta type="customerAdviceWt" key="BBCAR/客户建议工单"/>
+        <meta type="ocr" key="BBCAR/OCR影像识别任务"/>
+    </jirameta>
+
+    <ice configFilePath="/data/www/ins_share/config/cm/iceStorm.config"/>
+
+    <listeners port="9999">
+        <!--&lt;!&ndash;servicename akka服务名 listenerport akka服务端口 expectclassname处理器需要的数据类型 processor处理器类名&ndash;&gt;-->
+        <!-- <listener servicename="jiraQuoteTaskFinishNotifyReceiver"
+                  expectclassname="com.baoxian.jira.task.insure.quote.JiraQuoteTaskBean"
+                  processor="com.baoxian.enquiry.jira.JiraQuoteTaskEventReceiver">
+        </listener>
+        -->
+        <!--<listener servicename="order-payment-listener"-->
+        <!--expectclassname="com.baoxian.jira.task.payment.JiraPaymentTaskBean"-->
+        <!--processor="com.baoxian.test.JiraPaymentTaskEventReceiver">-->
+        <!--</listener>-->
+
+    </listeners>
+
+
+    <converters>
+        <!-- 多方初审jiraBean -->
+        <register classname="com.baoxian.jira.task.verify.JiraVerifyTaskBean">
+            <attrmaps>
+                <attrmap objattr="bizID1" jiraattr="f.业务ID1"/>
+                <attrmap objattr="bizID2" jiraattr="f.业务ID2"/>
+                <attrmap objattr="bizID3" jiraattr="f.业务ID3"/>
+                <attrmap objattr="orgPath" jiraattr="f.机构路径"/>
+                <attrmap objattr="processGroup" jiraattr="f.处理组"/>
+                <attrmap objattr="processUser" jiraattr="f.处理用户"/>
+
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="created" jiraattr="created"/>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+
+                <attrmap objattr="multiQuoteId" jiraattr="f.多方报价号"/>
+                <attrmap objattr="createdDate" jiraattr="f.下单时间"/>
+                <attrmap objattr="contactsInfo" jiraattr="f.联系人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id}; 姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="insureConfig" jiraattr="f.车险投保配置"/>
+                <attrmap objattr="provider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="userRemark" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="trafficInsEffectDate" jiraattr="f.交强险生效日期"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="taxpayerInfo" jiraattr="f.纳税人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="operatorRemark" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="bizInsEffectDate" jiraattr="f.商业险生效日期"/>
+                <attrmap objattr="applicantInfo" jiraattr="f.投保人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.车主姓名"/>
+                </attrmap>
+                <attrmap objattr="businessId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="providerDetail" jiraattr="f.车险供应商详细信息"/>
+                <attrmap objattr="insCompanyId" jiraattr="f.保险公司编号"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+                <attrmap objattr="processType" jiraattr="f.免录单处理类型"/>
+                <attrmap objattr="processStatus" jiraattr="f.免录单处理状态"/>
+
+                <attrmap objattr="provinceCode" jiraattr="f.省代码"/>
+                <attrmap objattr="cityCode" jiraattr="f.市代码"/>
+                <attrmap objattr="taskStatus" jiraattr="f.任务状态"/>
+                <attrmap objattr="bizStatus" jiraattr="f.业务状态"/>
+            </attrmaps>
+        </register>
+
+        <!-- 核保jiraBean -->
+        <register classname="com.baoxian.jira.task.insure.JiraInsureTaskBean">
+            <attrmaps>
+                <attrmap objattr="bizID1" jiraattr="f.业务ID1"/>
+                <attrmap objattr="bizID2" jiraattr="f.业务ID2"/>
+                <attrmap objattr="bizID3" jiraattr="f.业务ID3"/>
+                <attrmap objattr="orgPath" jiraattr="f.机构路径"/>
+                <attrmap objattr="processGroup" jiraattr="f.处理组"/>
+                <attrmap objattr="processUser" jiraattr="f.处理用户"/>
+
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="created" jiraattr="created"/>
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id}; 姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.车主姓名"/>
+                </attrmap>
+                <attrmap objattr="contactsInfo" jiraattr="f.联系人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="taxpayerInfo" jiraattr="f.纳税人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="applicantInfo" jiraattr="f.投保人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="effectDate" jiraattr="f.车险生效日期" type="object"
+                         classname="com.baoxian.jira.support.JiraInsDate"
+                         formatstring="交强险生效日期:{businessInsEffectDate};商业险生效日期:{trafficInsEffectDate}">
+                </attrmap>
+
+                <attrmap objattr="price" jiraattr="f.车险价格详细" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPrice"
+                         formatstring="交强险:{bussPrice};商业险:{trafficPrice};车船税:{taxPrice}">
+                </attrmap>
+                <attrmap objattr="propNum" jiraattr="f.车险投保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="result" jiraattr="f.车险报价或核保处理结果"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="provider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="createdDate" jiraattr="f.下单时间"/>
+                <attrmap objattr="insureConfig" jiraattr="f.车险投保配置"/>
+                <attrmap objattr="businessId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="quoteTotalPrice" jiraattr="f.CarInsureTotalPrice"/>
+                <attrmap objattr="userRemark" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="operatorRemark" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="checkCode" jiraattr="f.支付号|校验码"/>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="providerDetail" jiraattr="f.保险公司编号"/>
+                <attrmap objattr="insCompanyId" jiraattr="f.车险供应商详细信息"/>
+                <attrmap objattr="paymentMethod" jiraattr="f.支付方式"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+                <attrmap objattr="isValid" jiraattr="f.有效"/>
+
+                <attrmap objattr="taskStatus" jiraattr="f.任务状态"/>
+                <attrmap objattr="bizStatus" jiraattr="f.业务状态"/>
+                <attrmap objattr="verifyChecked" jiraattr="f.是否已初审"/>
+                <attrmap objattr="addon" jiraattr="f.是否外挂"/>
+                <attrmap objattr="provinceCode" jiraattr="f.省代码"/>
+                <attrmap objattr="cityCode" jiraattr="f.市代码"/>
+				<attrmap objattr="isRenewal" jiraattr="f.是否快速续保"/>
+            </attrmaps>
+        </register>
+
+        <!-- 报价jiraBean -->
+        <register classname="com.baoxian.jira.task.quote.JiraQuoteTaskBean">
+            <attrmaps>
+                <attrmap objattr="bizID1" jiraattr="f.业务ID1"/>
+                <attrmap objattr="bizID2" jiraattr="f.业务ID2"/>
+                <attrmap objattr="bizID3" jiraattr="f.业务ID3"/>
+                <attrmap objattr="orgPath" jiraattr="f.机构路径"/>
+                <attrmap objattr="processGroup" jiraattr="f.处理组"/>
+                <attrmap objattr="processUser" jiraattr="f.处理用户"/>
+
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="created" jiraattr="created"/>
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id}; 姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.车主姓名"/>
+                </attrmap>
+                <attrmap objattr="contactsInfo" jiraattr="f.联系人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="taxpayerInfo" jiraattr="f.纳税人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="applicantInfo" jiraattr="f.投保人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+
+                <attrmap objattr="effectDate" jiraattr="f.车险生效日期" type="object"
+                         classname="com.baoxian.jira.support.JiraInsDate"
+                         formatstring="交强险生效日期:{businessInsEffectDate};商业险生效日期:{trafficInsEffectDate}">
+                </attrmap>
+
+                <attrmap objattr="price" jiraattr="f.车险价格详细" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPrice"
+                         formatstring="交强险:{bussPrice};商业险:{trafficPrice};车船税:{taxPrice}">
+                </attrmap>
+                <attrmap objattr="propNum" jiraattr="f.车险投保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="result" jiraattr="f.车险报价或核保处理结果"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="provider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="createdDate" jiraattr="f.下单时间"/>
+                <attrmap objattr="insureConfig" jiraattr="f.车险投保配置"/>
+                <attrmap objattr="businessId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="quoteTotalPrice" jiraattr="f.CarInsureTotalPrice"/>
+                <attrmap objattr="userRemark" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="operatorRemark" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="checkCode" jiraattr="f.支付号|校验码"/>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="providerDetail" jiraattr="f.保险公司编号"/>
+                <attrmap objattr="insCompanyId" jiraattr="f.车险供应商详细信息"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+                <attrmap objattr="isValid" jiraattr="f.有效"/>
+
+                <attrmap objattr="taskStatus" jiraattr="f.任务状态"/>
+                <attrmap objattr="bizStatus" jiraattr="f.业务状态"/>
+                <attrmap objattr="verifyChecked" jiraattr="f.是否已初审"/>
+                <attrmap objattr="addon" jiraattr="f.是否外挂"/>
+                <attrmap objattr="provinceCode" jiraattr="f.省代码"/>
+                <attrmap objattr="cityCode" jiraattr="f.市代码"/>
+            </attrmaps>
+        </register>
+
+        <!-- 外挂jiraBean -->
+        <register classname="com.baoxian.bop.api.rebot.JiraTmp">
+            <attrmaps>
+                <attrmap objattr="taskId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="type" jiraattr="type"/>
+                 <attrmap objattr="description" jiraattr="description"/>
+                 <attrmap objattr="environment" jiraattr="environment"/>
+                 <attrmap objattr="resolution" jiraattr="resolution"/>
+                 <attrmap objattr="assignee" jiraattr="assignee"/>
+                 <attrmap objattr="summary" jiraattr="summary"/>
+                 <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+            </attrmaps>
+        </register>
+
+        <!-- 支付jiraBean -->
+        <register classname="com.baoxian.jira.task.payment.JiraPaymentTaskBean">
+            <attrmaps>
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="created" jiraattr="created"/>
+
+                <attrmap objattr="orderId" jiraattr="f.订单号"/>
+                <attrmap objattr="bizTransactionId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="paymentMethod" jiraattr="f.支付方式"/>
+                <attrmap objattr="orderPlaceDate" jiraattr="f.下单时间"/>
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id};工号:{jobId};姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="checkCode" jiraattr="f.支付号|校验码"/>
+                <attrmap objattr="paymentAmount" jiraattr="f.支付金额"/>
+                <attrmap objattr="propNum" jiraattr="f.车险投保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                    <attrmap objattr="businessPropNum" jiraattr="f.商业险投保单号"/>
+                    <attrmap objattr="trafficPropNum" jiraattr="f.交强险投保单号"/>
+                </attrmap>
+                <attrmap objattr="bizInsPropNum" jiraattr="f.商业险投保单号"/>
+                <attrmap objattr="trafficInsPropNum" jiraattr="f.交强险投保单号"/>
+                <attrmap objattr="effectDate" jiraattr="f.车险生效日期" type="object"
+                         classname="com.baoxian.jira.support.JiraInsDate"
+                         formatstring="交强险生效日期:{businessInsEffectDate};商业险生效日期:{trafficInsEffectDate}">
+                </attrmap>
+                <attrmap objattr="trafficInsEffectDate" jiraattr="f.交强险生效日期"/>
+                <attrmap objattr="bizInsEffectDate" jiraattr="f.商业险生效日期"/>
+                <attrmap objattr="carInsDetailPrices" jiraattr="f.车险价格详细" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPrice"
+                         formatstring="商业险价格:{bussPrice};交强险价格:{trafficPrice};车船税价格:{taxPrice}">
+                </attrmap>
+                <attrmap objattr="bizInsPrice" jiraattr="f.商业险价格"/>
+                <attrmap objattr="trafficInsPrice" jiraattr="f.交强险价格"/>
+                <attrmap objattr="insCompanyId" jiraattr="f.保险公司ID"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="carInsProvider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="result" jiraattr="f.支付处理结果"/>
+                <attrmap objattr="tipsForUser" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="tipsForBizMgr" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="paymentTarget" jiraattr="f.支付最终目标"/>
+                <attrmap objattr="txTime" jiraattr="f.交易时间"/>
+                <attrmap objattr="authNumber" jiraattr="f.收款平台授权号"/>
+                <attrmap objattr="traceNumber" jiraattr="f.交易跟踪号"/>
+                <attrmap objattr="paymentTraceNumber" jiraattr="f.支付跟踪号"/>
+                <attrmap objattr="payee" jiraattr="f.收款方"/>
+                <attrmap objattr="merchantId" jiraattr="f.收款商户ID"/>
+                <attrmap objattr="thirdPartyMerchantId" jiraattr="f.第三方收款服务方ID"/>
+                <attrmap objattr="isSecondPaymentTask" jiraattr="f.是否二次支付任务"/>
+                <attrmap objattr="isValid" jiraattr="f.有效"/>
+                <attrmap objattr="serviceProvider" jiraattr="f.收款服务方"/>
+                <attrmap objattr="paymentPlatform" jiraattr="f.支付平台"/>
+                <attrmap objattr="paymentBank" jiraattr="f.付款银行"/>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="carInsPolicyCode" jiraattr="f.车险保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="businessPolicyCode" jiraattr="f.商业险保单号"/>
+                <attrmap objattr="trafficPolicyCode" jiraattr="f.交强险保单号"/>
+                <attrmap objattr="carInsProviderId" jiraattr="f.车险供应商ID"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+            </attrmaps>
+        </register>
+
+        <!-- 承保jiraBean -->
+        <register classname="com.baoxian.jira.task.underwrite.JiraUnderwriteTaskBean">
+            <attrmaps>
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="created" jiraattr="created"/>
+
+                <attrmap objattr="bizTransactionId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="orderId" jiraattr="f.订单号"/>
+                <attrmap objattr="orderPlaceDate" jiraattr="f.下单时间"/>
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id};工号:{jobId};姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="insCompanyId" jiraattr="f.保险公司ID"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="carInsProvider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="effectDate" jiraattr="f.车险生效日期" type="object"
+                         classname="com.baoxian.jira.support.JiraInsDate"
+                         formatstring="交强险生效日期:{businessInsEffectDate};商业险生效日期:{trafficInsEffectDate}">
+                </attrmap>
+                <attrmap objattr="trafficInsEffectDate" jiraattr="f.交强险生效日期"/>
+                <attrmap objattr="bizInsEffectDate" jiraattr="f.商业险生效日期"/>
+                <attrmap objattr="propNum" jiraattr="f.车险投保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="bizInsPropNum" jiraattr="f.商业险投保单号"/>
+                <attrmap objattr="trafficInsPropNum" jiraattr="f.交强险投保单号"/>
+                <attrmap objattr="carInsPolicyCode" jiraattr="f.车险保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="businessPolicyCode" jiraattr="f.商业险保单号"/>
+                <attrmap objattr="trafficPolicyCode" jiraattr="f.交强险保单号"/>
+                <attrmap objattr="carInsDetailPrices" jiraattr="f.车险价格详细" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPrice"
+                         formatstring="商业险价格:{bussPrice};交强险价格:{trafficPrice};车船税价格:{taxPrice}">
+                </attrmap>
+                <attrmap objattr="bizInsPrice" jiraattr="f.商业险价格"/>
+                <attrmap objattr="trafficInsPrice" jiraattr="f.交强险价格"/>
+                <attrmap objattr="applicantInfo" jiraattr="f.投保人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="tipsForUser" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="tipsForBizMgr" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="isValid" jiraattr="f.有效"/>
+                <attrmap objattr="result" jiraattr="f.车险承保处理结果"/>
+                <attrmap objattr="businessPolicyId" jiraattr="f.商业险保单ID"/>
+                <attrmap objattr="trafficPolicyId" jiraattr="f.交强险保单ID"/>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="forTest" jiraattr="f.是否测试任务"/>
+                <attrmap objattr="isSubmitted" jiraattr="f.是否提交录单"/>
+                <attrmap objattr="carInsProviderId" jiraattr="f.车险供应商ID"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+            </attrmaps>
+        </register>
+
+        <!-- 配送jiraBean -->
+        <register classname="com.baoxian.jira.task.delivery.JiraDeliveryTaskBean">
+            <attrmaps>
+                <attrmap objattr="summary" jiraattr="summary"/>
+                <attrmap objattr="reporter" jiraattr="reporter"/>
+                <attrmap objattr="assignee" jiraattr="assignee"/>
+                <attrmap objattr="id" jiraattr="id"/>
+                <attrmap objattr="key" jiraattr="key"/>
+                <attrmap objattr="eventType" jiraattr="eventType"/>
+                <attrmap objattr="status" jiraattr="status"/>
+                <attrmap objattr="taskType" jiraattr="f.自动|人工"/>
+                <attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>
+                <attrmap objattr="transactionType" jiraattr="f.交易类型"/>
+                <attrmap objattr="created" jiraattr="created"/>
+
+                <attrmap objattr="insurancePlacerAccount" jiraattr="f.下单账号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsAccount"
+                         formatstring="Source:{source};id:{id};工号:{jobId};姓名:{name};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="bizTransactionId" jiraattr="f.车险业务跟踪号"/>
+                <attrmap objattr="deliveryInfoId" jiraattr="f.配送流水号"/>
+                <attrmap objattr="orderId" jiraattr="f.订单号"/>
+                <attrmap objattr="deliveryMode" jiraattr="f.配送方式"/>
+                <attrmap objattr="logisticsCompanyName" jiraattr="f.物流公司名称"/>
+                <attrmap objattr="deliveryAmount" jiraattr="f.配送费"/>
+                <attrmap objattr="deliveryNo" jiraattr="f.配送单号"/>
+                <attrmap objattr="deliveryProvider" jiraattr="f.配送方"/>
+                <attrmap objattr="consignee" jiraattr="f.收件人"/>
+                <attrmap objattr="contactPhoneNo" jiraattr="f.联系电话"/>
+                <attrmap objattr="deliveryAddress" jiraattr="f.配送地址"/>
+                <attrmap objattr="postCode" jiraattr="f.邮政编码"/>
+                <attrmap objattr="carInsPolicyCode" jiraattr="f.车险保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="businessPolicyCode" jiraattr="f.商业险保单号"/>
+                <attrmap objattr="trafficPolicyCode" jiraattr="f.交强险保单号"/>
+                <attrmap objattr="tipsForUser" jiraattr="f.提示信息(给网站用户)"/>
+                <attrmap objattr="tipsForBizMgr" jiraattr="f.提示信息(给业管人员)"/>
+                <attrmap objattr="organization" jiraattr="f.所属机构"/>
+                <attrmap objattr="organizationCode" jiraattr="f.所属机构编码"/>
+                <attrmap objattr="isValid" jiraattr="f.有效"/>
+                <attrmap objattr="result" jiraattr="f.配送处理结果"/>
+                <attrmap objattr="insuredPersonInfo" jiraattr="f.被保险人" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                    <attrmap objattr="name" jiraattr="f.被保险人姓名" />
+                </attrmap>
+                <attrmap objattr="vehicleInfo" jiraattr="f.投保车辆" type="object"
+                         classname="com.baoxian.jira.support.JiraCarInfo"
+                         formatstring="车牌:{plateNumber};车型:{model};发动机号:{engineNo};车架号:{vin};初登日期:{firstRegisterDate};过户车:{chgOwnerFlag};过户时间:{chgOwnerDate}">
+                    <attrmap objattr="plateNumber" jiraattr="f.投保车辆车牌"/>
+                </attrmap>
+                <attrmap objattr="propNum" jiraattr="f.车险投保单号" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPropNum"
+                         formatstring="商业险保单号:{businessPolicyCode};交强险保单号:{trafficPolicyCode};商业险投保单号:{businessPropNum};交强险投保单号:{trafficPropNum};车险业务跟踪号:{businessId};订单号:{orderId};配送编号:{deliveryNumber}">
+                </attrmap>
+                <attrmap objattr="bizInsPropNum" jiraattr="f.商业险投保单号"/>
+                <attrmap objattr="trafficInsPropNum" jiraattr="f.交强险投保单号"/>
+                <attrmap objattr="deliveryRemark" jiraattr="f.配送备注"/>
+                <attrmap objattr="marketChannelType" jiraattr="f.订单来源"/>
+                <attrmap objattr="deliveryStartTime" jiraattr="f.开始配送时间"/>
+                <attrmap objattr="deliveryFinishedTime" jiraattr="f.配送完成时间"/>
+                <attrmap objattr="carInsProviderId" jiraattr="f.车险供应商ID"/>
+                <attrmap objattr="carOwner" jiraattr="f.车主" type="object"
+                         classname="com.baoxian.jira.support.JiraPersonInfo"
+                         formatstring="姓名:{name};证件类型:{certificate};证件号码:{certificateNumber};电话:{phoneNumber};邮箱:{email}">
+                </attrmap>
+                <attrmap objattr="bizInsPrice" jiraattr="f.商业险价格"/>
+                <attrmap objattr="trafficInsPrice" jiraattr="f.交强险价格"/>
+                <attrmap objattr="carInsProvider" jiraattr="f.车险供应商"/>
+                <attrmap objattr="insCompanyId" jiraattr="f.保险公司ID"/>
+                <attrmap objattr="insCompany" jiraattr="f.保险公司品牌名称"/>
+                <attrmap objattr="printInsPolicyTime" jiraattr="f.打单时间"/>
+                <attrmap objattr="bizOperatorId" jiraattr="f.业管账号"/>
+                <attrmap objattr="insureWay" jiraattr="f.投保方式"/>
+                <attrmap objattr="insureZone" jiraattr="f.车险投保地区"/>
+                <attrmap objattr="carInsDetailPrices" jiraattr="f.车险价格详细" type="object"
+                         classname="com.baoxian.jira.support.JiraInsPrice"
+                         formatstring="商业险价格:{bussPrice};交强险价格:{trafficPrice};车船税价格:{taxPrice}">
+                </attrmap>
+            </attrmaps>
+        </register>
+
+        <!--&lt;!&ndash; 资料核实工单jiraBean &ndash;&gt;-->
+        <!--<register classname="com.baoxian.jira.task.workticket.InfoVerificationTaskBean">-->
+            <!--<attrmaps>-->
+                <!--<attrmap objattr="summary" jiraattr="summary"/>-->
+                <!--<attrmap objattr="reporter" jiraattr="reporter"/>-->
+                <!--<attrmap objattr="assignee" jiraattr="assignee"/>-->
+                <!--<attrmap objattr="duedate" jiraattr="duedate"/>-->
+                <!--<attrmap objattr="id" jiraattr="id"/>-->
+                <!--<attrmap objattr="key" jiraattr="key"/>-->
+                <!--<attrmap objattr="eventType" jiraattr="eventType"/>-->
+                <!--<attrmap objattr="status" jiraattr="status"/>-->
+                <!--<attrmap objattr="jobId" jiraattr="f.代理人工号"/>-->
+                <!--<attrmap objattr="registeredPhone" jiraattr="f.注册电话"/>-->
+                <!--<attrmap objattr="identificationNo" jiraattr="f.身份证号"/>-->
+            <!--</attrmaps>-->
+        <!--</register>-->
+
+        <!--&lt;!&ndash; 客户建议工单jiraBean &ndash;&gt;-->
+        <!--<register classname="com.baoxian.jira.task.workticket.CustomerAdviceTaskBean">-->
+            <!--<attrmaps>-->
+                <!--<attrmap objattr="summary" jiraattr="summary"/>-->
+                <!--<attrmap objattr="reporter" jiraattr="reporter"/>-->
+                <!--<attrmap objattr="assignee" jiraattr="assignee"/>-->
+                <!--<attrmap objattr="duedate" jiraattr="duedate"/>-->
+                <!--<attrmap objattr="id" jiraattr="id"/>-->
+                <!--<attrmap objattr="key" jiraattr="key"/>-->
+                <!--<attrmap objattr="eventType" jiraattr="eventType"/>-->
+                <!--<attrmap objattr="status" jiraattr="status"/>-->
+                <!--<attrmap objattr="account" jiraattr="f.代理人（保网）帐号"/>-->
+                <!--<attrmap objattr="adviceType" jiraattr="f.建议类型"/>-->
+            <!--</attrmaps>-->
+        <!--</register>-->
+
+        <!--&lt;!&ndash; OCR影像识别jiraBean &ndash;&gt;-->
+        <!--<register classname="com.baoxian.jira.task.ocr.JiraOcrTaskBean">-->
+            <!--<attrmaps>-->
+                <!--<attrmap objattr="summary" jiraattr="summary"/>-->
+                <!--<attrmap objattr="reporter" jiraattr="reporter"/>-->
+                <!--<attrmap objattr="assignee" jiraattr="assignee"/>-->
+                <!--<attrmap objattr="id" jiraattr="id"/>-->
+                <!--<attrmap objattr="key" jiraattr="key"/>-->
+                <!--<attrmap objattr="eventType" jiraattr="eventType"/>-->
+                <!--<attrmap objattr="status" jiraattr="status"/>-->
+                <!--<attrmap objattr="taskType" jiraattr="f.自动|人工"/>-->
+                <!--<attrmap objattr="lastUpdate" jiraattr="f.最近更新"/>-->
+                <!--<attrmap objattr="transactionType" jiraattr="f.交易类型"/>-->
+                <!--<attrmap objattr="result" jiraattr="f.影像处理结果"/>-->
+                <!--<attrmap objattr="created" jiraattr="created"/>-->
+
+                <!--<attrmap objattr="agentJobNo" jiraattr="f.代理人工号"/>-->
+                <!--<attrmap objattr="agentName" jiraattr="f.代理人姓名"/>-->
+                <!--<attrmap objattr="albumId" jiraattr="f.影像ID"/>-->
+                <!--<attrmap objattr="albumName" jiraattr="f.影像名称"/>-->
+                <!--<attrmap objattr="albumDateCrated" jiraattr="f.影像创建时间"/>-->
+                <!--<attrmap objattr="albumInfo" jiraattr="f.影像信息"/>-->
+                <!--<attrmap objattr="imageInfo" jiraattr="f.图片信息"/>-->
+                <!--<attrmap objattr="supportOcr" jiraattr="f.支持OCR识别"/>-->
+                <!--<attrmap objattr="supportManual" jiraattr="f.支持人工审核"/>-->
+                <!--<attrmap objattr="isValid" jiraattr="f.有效"/>-->
+            <!--</attrmaps>-->
+        <!--</register>-->
+    </converters>
+
+    <jiraActions>
+        <!--                       报价                   -->
+        <action type="2_auto_start" jiraactionname="开始执行"/>
+        <action type="c_human_start" jiraactionname="人工任务处理"/>
+        <action type="E_human_auto_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="D_human_reopen" jiraactionname="需修正或补充报价信息"/>
+        <action type="B_human_quote_success" jiraactionname="报价成功"/>
+        <action type="C_human_quote_fail" jiraactionname="无法报价"/>
+        <action type="A_human_insured" jiraactionname="直接核保通过"/>
+        <action type="3_auto_restart" jiraactionname="执行失败重新调度"/>
+        <action type="4_auto_to_human" jiraactionname="执行失败转人工处理"/>
+        <action type="5_need_verify" jiraactionname="需修正或补充报价信息"/>
+        <!--<action type="6_auto_user_machine" jiraactionname="识别用户是否为机器人"/>-->
+        <action type="6_auto_need_verify_data" jiraactionname="补充校验信息"/>
+        <action type="8_auto_quote_success" jiraactionname="报价成功"/>
+        <action type="9_auto_quote_fail" jiraactionname="无法报价"/>
+        <action type="7_auto_insured" jiraactionname="直接核保通过"/>
+        <action type="d_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="b_close" jiraactionname="关闭报价"/>
+        <action type="human_check" jiraactionname="初审"/>
+        <action type="human_check_success" jiraactionname="初审通过"/>
+        <action type="human_confirm_quote" jiraactionname="人工干预报价"/>
+
+        <!--                       核保                     -->
+        <action type="insure_start" jiraactionname="开始执行"/>
+        <action type="human_insure_start" jiraactionname="人工任务处理"/>
+        <action type="human_auto_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="human_reopen" jiraactionname="需修正或补充核保信息"/>
+        <action type="human_insure_success" jiraactionname="核保成功"/>
+        <action type="human_insure_fail" jiraactionname="无法承保"/>
+        <action type="auto_insure_restart" jiraactionname="执行失败重新调度"/>
+        <action type="auto_insure_to_human" jiraactionname="执行失败转人工处理"/>
+        <action type="auto_insure_need_verify" jiraactionname="需修正或补充核保信息"/>
+        <action type="auto_insure_success" jiraactionname="核保成功"/>
+        <action type="auto_insure_fail" jiraactionname="无法承保"/>
+        <action type="insure_restart" jiraactionname="重新调度自动执行"/>
+        <action type="insure_close" jiraactionname="关闭核保"/>
+        <action type="insure_confirm" jiraactionname="确认核保成功"/>
+        <action type="auto_need_verify_data" jiraactionname="补充校验信息"/>
+        <action type="human_confirm_insure_error" jiraactionname="人工干预核保失败"/>
+		<action type="insure_changeToCallCenter" jiraactionname="转呼叫"/>
+		<action type="insure_changeToCM" jiraactionname="转业管"/>
+
+        <!--                       支付                    -->
+        <action type="p_success" jiraactionname="支付成功"/>
+        <action type="p_failure" jiraactionname="放弃支付"/>
+        <action type="p_revoke" jiraactionname="撤销支付"/>
+        <action type="p_close" jiraactionname="关闭支付"/>
+        <!-- 承保 -->
+        <action type="underwrite_revoke" jiraactionname="撤销承保"/>
+        <action type="underwrite_success" jiraactionname="承保成功"/>
+        <action type="underwrite_abandonment" jiraactionname="放弃承保"/>
+        <action type="underwrite_close" jiraactionname="关闭承保"/>
+        <action type="dataEntry_start" jiraactionname="开始录单"/>
+        <action type="dataEntry_complete" jiraactionname="录单完成"/>
+        <!-- 配送 -->
+        <action type="print_insPolicy_success" jiraactionname="打单成功"/>
+        <action type="deliver_start" jiraactionname="开始配送"/>
+        <action type="deliver_revoke" jiraactionname="撤销配送"/>
+        <action type="delivery_success" jiraactionname="配送成功"/>
+        <action type="delivery_abandonment" jiraactionname="放弃配送"/>
+        <action type="delivery_close" jiraactionname="关闭配送"/>
+        <!--多方初审-->
+        <action type="verify_toManualProcess" jiraactionname="人工任务处理"/>
+        <action type="verify_toOcrProcess" jiraactionname="OCR识别"/>
+        <action type="verify_success" jiraactionname="初审通过"/>
+        <action type="verify_unable" jiraactionname="无法承保"/>
+        <action type="verify_reopen" jiraactionname="重新识别"/>
+        <action type="verify_toModify" jiraactionname="返回修改"/>
+        <action type="verify_changeToCallCenter" jiraactionname="转呼叫"/>
+        <action type="verify_ocrFinished" jiraactionname="识别完成"/>
+        <action type="verify_resubmit" jiraactionname="重新提交初审"/>
+        <action type="verify_close" jiraactionname="关闭初审"/>
+    </jiraActions>
+</jiraclient>

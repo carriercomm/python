@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--工作流具体流向参考http://kb.baoxian.in/pages/viewpage.action?pageId=84410565-->
+<task-workflow-mapping>
+    <tasks>
+        <!-- 车险投保总流程 -->
+        <task type="carInsureMainTask" name="车险投保总流程" enquriyId="obj?.multiQuoteId">
+            <state value="投保任务已创建">
+                <transition action="快速续保"/>
+                <transition action="非快速续保"/>
+            </state>
+            <state value="非快速续保">
+                <transition action="新流程"/>
+                <transition action="非新流程"/>
+            </state>
+            <state value="多方初审中">
+                <transition action="初审通过"/>
+                <transition action="初审不通过"/>
+                <transition action="初审转报价"/>
+            </state>
+            <state value="初审不通过">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="待提交报价">
+                <transition action="精确报价"/>
+            </state>
+            <state value="报价中">
+                <transition action="报价成功"/>
+                <transition action="报价失败"/>
+            </state>
+            <state value="报价失败">
+                <transition action="重新报价"/>
+                <transition action="投保关闭"/>
+            </state>
+            <state value="待提交核保">
+                <transition action="提交核保"/>
+                <transition action="重新报价"/>
+            </state>
+            <state value="核保中">
+                <transition action="核保成功"/>
+                <transition action="核保失败"/>
+            </state>
+            <state value="核保失败">
+                <transition action="重新核保"/>
+                <transition action="核保关闭"/>
+            </state>
+            <state value="待支付">
+                <transition action="重新核保"/>
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+            </state>
+            <state value="支付成功">
+                <transition action="二次支付"/>
+                <transition action="非二次支付"/>
+            </state>
+            <state value="支付失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="二次支付中">
+                <transition action="二次支付成功"/>
+                <transition action="二次支付失败"/>
+            </state>
+            <state value="二次支付失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="承保中">
+                <transition action="承保通过"/>
+                <transition action="承保失败"/>
+            </state>
+            <state value="承保失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="录单暂存中">
+                <transition action="暂存成功"/>
+            </state>
+            <state value="录单暂存成功">
+                <transition action="录单成功"/>
+            </state>
+            <state value="已关闭">
+            </state>
+        </task>
+        <!-- 多方初审 -->
+        <task type="verifyTask" enquriyId="obj?.multiQuoteId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+                <transition action="取消任务"/>
+				<transition action="放弃投保"/>
+				<transition action="超时终止"/>
+            </state>
+            <state value="处理中">
+                <transition action="重新分配"/>
+                <transition action="退回修改"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="初审通过"/>
+                <transition action="拒绝承保"/>
+				<transition action="打回任务"/>
+				<transition action="拒绝承保"/>
+				<transition action="打回任务"/>
+				<transition action="人工分配"/>
+				<transition action="取消任务"/>
+				<transition action="放弃投保"/>
+				<transition action="超时终止"/>
+            </state>
+            <state value="信息待修改">
+                <transition action="修改完成"/>
+            </state>
+            <state value="初审已通过">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="初审不通过">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="已关闭">
+            </state>
+			<state value="任务已关闭">
+                <transition action="重新初审"/>
+            </state>
+        </task>
+        <task type="quoteTask" name="报价任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+                <transition action="开始暂存"/>
+            </state>
+            <state value="组分配中">
+                <transition action="分配组成功"/>
+				<transition action="流程异常"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="已分配到人">
+                <transition action="开始处理"/>
+				<transition action="开始精灵录单"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="人工处理中">
+                <transition action="重新分配"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="转业管人员处理"/>
+                <transition action="报价成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="打回任务"/>
+                <transition action="人工分配"/>
+            </state>
+            <state value="人工报价成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="人工报价失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="流程异常">
+                <transition action="人工分配组"/>
+                <transition action="人工分配人"/>
+            </state>
+            <state value="精灵录单中">
+                <transition action="录单完成"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="报价成功"/>
+                <transition action="拒绝承保"/>
+            </state>
+            <state value="精灵录单完成">
+                <transition action="开始查询"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="报价成功"/>
+                <transition action="拒绝承保"/>
+            </state>
+            <state value="精灵查询中">
+                <transition action="报价成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="转呼叫坐席处理"/>
+            </state>
+            <state value="自动暂存中">
+                <transition action="暂存成功"/>
+                <transition action="暂存异常"/>
+            </state>
+            <state value="暂存成功">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="人工调价组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="人工调价已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="人工调价已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="人工调价人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="人工调价处理中">
+                <transition action="重新分配"/>
+                <transition action="调价完成"/>
+                <transition action="拒绝承保"/>
+            </state>
+            <state value="人工调价完成">
+                <transition action="开始交强险及商业险查询"/>
+            </state>
+            <state value="交强险及商业险查询中">
+                <transition action="报价成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="自动报价成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="自动报价失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="暂存异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="暂存异常组分配中">
+                <transition action="组分配成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="暂存异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="暂存异常人分配中">
+                <transition action="人分配成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="暂存异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="暂存异常处理中">
+                <transition action="重新分配"/>
+                <transition action="重新自动暂存"/>
+                <transition action="转人工报价"/>
+            </state>
+            <state value="查询异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="查询异常组分配中">
+                <transition action="组分配成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="查询异常人分配中">
+                <transition action="人分配成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="查询异常处理中">
+                <transition action="重新分配"/>
+                <transition action="重新交强险及商业险查询"/>
+                <transition action="转人工报价"/>
+            </state>
+            <state value="任务已关闭">
+                <transition action="重新报价"/>
+                <transition action="重新调整报价"/>
+            </state>
+        </task>
+        <task type="insureTask" name="核保任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+                <transition action="开始自动提交核保"/>
+                <transition action="开始暂存"/>
+                <transition action="转手动提交核保"/>
+            </state>
+            <state value="组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="已分配到人">
+                <transition action="开始处理"/>
+                <transition action="开始精灵录单"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="处理中">
+                <transition action="重新分配"/>
+                <transition action="退回修改"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="转业管人员处理"/>
+                <transition action="人工分配"/>
+                <transition action="打回任务"/>
+                <transition action="核保成功"/>
+                <transition action="拒绝承保"/>
+            </state>
+            <state value="信息待修改">
+                <transition action="修改完成"/>
+            </state>
+            <state value="核保成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="核保失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="精灵录单中">
+                <transition action="录单完成"/>
+                <transition action="退回修改"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="核保成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="精灵录单完成">
+                <transition action="开始查询"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="核保成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="精灵查询中">
+                <transition action="核保成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="转呼叫坐席处理"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="手动提交核保">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="手动提交核保已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="手动提交核保已分配到人">
+                <transition action="开始处理"/>
+            </state>
+            <state value="手动提交核保中">
+                <transition action="提交核保成功"/>
+                <transition action="拒绝承保"/>
+            </state>
+            <state value="自动提交核保中">
+                <transition action="提交核保成功"/>
+                <transition action="提交核保异常"/>
+            </state>
+            <state value="自动暂存中">
+                <transition action="暂存成功转人工报价调价"/>
+                <transition action="暂存成功转人工调价并提交核保"/>
+                <transition action="暂存异常"/>
+            </state>
+            <state value="人工报价调价">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="人工报价调价组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="人工报价调价已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="人工报价调价人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="人工报价调价已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="人工报价调价处理中">
+                <transition action="重新分配"/>
+                <transition action="人工报价调价完成"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="人工调价并提交核保">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="人工调价并提交核保组分配中">
+                <transition action="分配组成功"/>
+            </state>
+            <state value="人工调价并提交核保已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="人工调价并提交核保人分配中">
+                <transition action="分配人成功"/>
+            </state>
+            <state value="人工调价并提交核保已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="人工调价并提交核保处理中">
+                <transition action="重新分配"/>
+                <transition action="人工调价并提交核保成功"/>
+                <transition action="拒绝承保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="人工报价调价完成">
+                <transition action="开始自动报价查询"/>
+            </state>
+            <state value="自动查询报价结果中">
+                <transition action="查询成功"/>
+                <transition action="查询报价结果异常"/>
+            </state>
+            <state value="核保提交成功">
+                <transition action="开始交强险及商业险查询"/>
+                <transition action="开始交强险查询"/>
+                <transition action="开始商业险查询"/>
+            </state>
+            <state value="交强险及商业险查询中">
+                <transition action="核保成功"/>
+                <transition action="核保失败"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="交强险查询中">
+                <transition action="交强险查询完成"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="交强险查询完成">
+                <transition action="开始商业险查询"/>
+                <transition action="核保成功"/>
+                <transition action="核保失败"/>
+            </state>
+            <state value="商业险查询中">
+                <transition action="商业险查询完成"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="商业险查询完成">
+                <transition action="开始交强险查询"/>
+                <transition action="核保成功"/>
+                <transition action="核保失败"/>
+            </state>
+            <state value="自动核保成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="自动核保失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="提交核保异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="提交核保异常组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="提交核保异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="提交核保异常人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="提交核保异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="提交核保异常处理中">
+                <transition action="重新分配"/>
+                <transition action="重新自动提交核保"/>
+                <transition action="转人工核保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="暂存异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="暂存异常组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="暂存异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="暂存异常人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="暂存异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="暂存异常处理中">
+                <transition action="重新分配"/>
+                <transition action="重新暂存"/>
+                <transition action="转人工核保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="查询异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="查询异常组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="查询异常人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="查询异常处理中">
+                <transition action="重新分配"/>
+                <transition action="重新自动查询核保结果"/>
+                <transition action="转人工核保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="查询报价结果异常">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="查询报价结果异常组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询报价结果异常已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="查询报价结果异常人分配中">
+                <transition action="分配人成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="查询报价结果异常已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="查询报价结果异常">
+                <transition action="重新分配"/>
+                <transition action="重新自动查询报价结果"/>
+                <transition action="转人工核保"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="任务已关闭">
+                <transition action="重新核保"/>
+                <transition action="重新调整报价"/>
+                <transition action="重新调整报价并提交核保"/>
+            </state>
+        </task>
+        <task type="paymentTask" name="支付任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始手动处理"/>
+                <transition action="开始自动处理"/>
+                <transition action="更改支付方式重新支付"/>
+                <transition action="重新核保"/>
+            </state>
+            <state value="手动处理中">
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+                <transition action="放弃支付"/>
+                <transition action="支付过期"/>
+                <transition action="更改支付方式重新支付"/>
+                <transition action="重新核保"/>
+            </state>
+            <state value="自动处理中">
+                <transition action="开始申请支付号"/>
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+                <transition action="支付过期"/>
+            </state>
+            <state value="支付号申请中">
+                <transition action="支付号申请成功"/>
+                <transition action="支付号申请失败"/>
+            </state>
+            <state value="支付号申请成功">
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+                <transition action="支付过期"/>
+                <transition action="开始支付号取消"/>
+            </state>
+            <state value="支付号申请失败">
+                <transition action="重新申请支付号"/>
+                <transition action="更改支付方式重新支付"/>
+            </state>
+            <state value="支付号取消中">
+                <transition action="支付号取消成功"/>
+                <transition action="支付号取消失败"/>
+            </state>
+            <state value="支付号取消成功">
+                <transition action="更改支付方式重新支付"/>
+            </state>
+            <state value="支付号取消失败">
+                <transition action="人工取消支付号成功"/>
+            </state>
+            <state value="待重新核保完成">
+                <transition action="重新核保完成"/>
+            </state>
+            <state value="支付成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="支付失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="支付已过期">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="放弃支付">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="流程异常">
+                <transition action="人工分配组"/>
+            </state>
+            <state value="任务已关闭">
+                <transition action="更改支付方式重新支付"/>
+            </state>
+        </task>
+        <task type="secondPaymentTask" name="二次支付任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始分配人"/>
+            </state>
+            <state value="已分配到人">
+                <transition action="开始处理"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="处理中">
+                <transition action="重新分配"/>
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+                <transition action="支付异常"/>
+            </state>
+            <state value="支付成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="已转支持组">
+                <transition action="支撑完成转财务"/>
+            </state>
+            <state value="支付失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="已关闭">
+            </state>
+        </task>
+        <task type="underwriteTask" name="承保任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始手动处理"/>
+                <transition action="开始自动处理"/>
+            </state>
+            <state value="手动处理中">
+                <transition action="承保成功"/>
+                <transition action="承保失败"/>
+                <transition action="放弃承保"/>
+            </state>
+            <state value="自动处理中">
+                <transition action="开始交强险及商业险查询"/>
+                <transition action="开始交强险查询"/>
+                <transition action="开始商业险查询"/>
+            </state>
+            <state value="交强险及商业险查询中">
+                <transition action="承保成功"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="交强险查询中">
+                <transition action="交强险查询成功"/>
+                <transition action="查询异常"/>
+            </state>
+             <state value="交强险查询成功">
+                <transition action="开始商业险查询"/>
+                <transition action="承保成功"/>
+            </state>
+            <state value="商业险查询中">
+                <transition action="商业险查询成功"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="商业险查询成功">
+                <transition action="开始交强险查询"/>
+                <transition action="查询异常"/>
+            </state>
+            <state value="查询异常">
+                <transition action="重新查询"/>
+                <transition action="转人工处理"/>
+            </state>
+            <state value="人工查询中">
+                <transition action="承保成功"/>
+                <transition action="放弃承保"/>
+            </state>
+            <state value="承保成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="承保失败">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="放弃承保">
+                <transition action="关闭任务"/>
+            </state>
+             <state value="流程异常">
+                <transition action="人工分配组"/>
+            </state>
+            <state value="任务已关闭">
+            </state>
+        </task>
+        <task type="insPolicySyncTask" name="录单任务" enquriyId="obj?.enquiryId">
+			<state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="数据同步成功"/>
+            </state>
+            <state value="数据同步成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="流程异常">
+                <transition action="人工分配组"/>
+            </state>
+            <state value="任务已关闭">
+			</state>
+        </task>
+        <task type="insPolicyPrintingTask" name="打单任务" enquriyId="obj?.enquiryId">
+			<state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始分配人"/>
+                <transition action="开始打单"/>
+            </state>
+            <state value="已分配到人">
+                <transition action="开始打单"/>
+                <transition action="重新分配"/>
+            </state>
+            <state value="打单中">
+                <transition action="打单成功"/>
+                <transition action="打单失败"/>
+                <transition action="重新分配"/>
+                <transition action="打回任务"/>
+            </state>
+            <state value="打单成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="打单失败">
+                <transition action="重新打单"/>
+                <transition action="关闭任务"/>
+            </state>
+            <state value="流程异常">
+                <transition action="人工分配组"/>
+                <transition action="人工分配人"/>
+            </state>
+            <state value="任务已关闭">
+            </state>
+        </task>
+        <task type="deliveryTask" name="配送任务" enquriyId="obj?.enquiryId">
+            <state value="任务已创建">
+                <transition action="开始分配组"/>
+            </state>
+            <state value="组分配中">
+                <transition action="分配组成功"/>
+                <transition action="流程异常"/>
+            </state>
+            <state value="已分配到组">
+                <transition action="开始快递配送"/>
+                <transition action="开始自取配送"/>
+            </state>
+            <state value="快递配送中">
+                <transition action="配送成功"/>
+                <transition action="配送失败"/>
+            </state>
+            <state value="自取配送中">
+                <transition action="配送成功"/>
+            </state>
+            <state value="配送成功">
+                <transition action="关闭任务"/>
+            </state>
+            <state value="配送失败">
+                <transition action="重新快递配送"/>
+            </state>
+            <state value="流程异常">
+                <transition action="人工分配组"/>
+            </state>
+            <state value="任务已关闭">
+            </state>
+        </task>
+    </tasks>
+
+    <!-- demo -->
+    <!--<task>-->
+        <!--<state value="Open">-->
+            <!--&lt;!&ndash; ruleType:default(不设置ruleType的情况下使用default模式，ruleExpression为groovy代码)/custom(自定义的Rule实现);ruleExpression:groovy代码一定以obj开头 &ndash;&gt;-->
+            <!--<transition action="开始自动提交核保"-->
+                        <!--ruleExpression="obj?.taskType=='AutoTask' &amp;&amp; obj?.insureWay=='human'"/>-->
+            <!--&lt;!&ndash; ruleType默认使用default模式,使用default模式可以不设置ruleType &ndash;&gt;-->
+            <!--<transition action="开始暂存" ruleType="default"-->
+                        <!--ruleExpression="obj?.taskType=='AutoTask' &amp;&amp; obj?.insureWay=='human'"/>-->
+            <!--<transition action="开始手动提交核保" ruleType="custom" ruleExpression="r1 || r2"/>-->
+            <!--&lt;!&ndash; r1 r2 为自定义的Rule实现 &ndash;&gt;-->
+        <!--</state>-->
+        <!--<state value="开始暂存">-->
+            <!--<transition action="自动暂存中" ruleType="default"-->
+                        <!--ruleExpression="obj?.insureWay == 'human' &amp;&amp; obj?.taskType =='AutoTask' &amp;&amp; obj?.taskStatus == 'Created'"/>-->
+        <!--</state>-->
+    <!--</task>-->
+    <!-- demo -->
+
+    <!-- 规则：包括车险投保各流程 -->
+    <rules>
+        <!-- 自定义的Rule实现 demo -->
+        <rule id="r1" name="规则1" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>
+        <rule id="r2" name="规则2" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>
+        <rule id="r11" name="规则2" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>
+    </rules>
+
+
+	<workflows>
+
+        <workflow id="renewal_task_process">
+            <field name="jiraTaskType">
+                insureTask
+            </field>          
+
+						<field name="actionNameGroovyScriptFlag">
+                true
+            </field>
+
+            <field name="actionName">
+
+                <![CDATA[
+                   String actionNameResult=null;
+                   if(x?.getBizInfo("processType")=="robot" && x?.getBizInfo("isRenewal")=="N"){
+                        actionNameResult="开始精灵录单";
+                   } else {
+                        actionNameResult="开始处理";
+                   }
+                   actionNameResult;
+                ]]>
+
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到人" || x?.currnetStatus == "已分配到业管人员" || x?.currnetStatus == "已分配到呼叫人员" || x?.currnetStatus=="人工报价调价已分配到人" || x?.currnetStatus=="手动提交核保已分配到人" || x?.currnetStatus=="人工调价并提交核保已分配到人" || x?.currnetStatus=="提交核保异常已分配到人" || x?.currnetStatus=="暂存异常已分配到人" || x?.currnetStatus=="查询异常已分配到人" || x?.currnetStatus=="查询报价结果异常已分配到人"
+                ]]>
+            </field>
+
+        </workflow>
+
+        <workflow id="insure_task_process">
+            <field name="jiraTaskType">
+                insureTask
+            </field>          
+
+						<field name="actionNameGroovyScriptFlag">
+                true
+            </field>
+
+            <field name="actionName">
+
+                <![CDATA[
+                   String actionNameResult=null;
+                   if(x?.getBizInfo("processType")=="robot"){
+                        actionNameResult="开始精灵录单";
+                   }else if(x?.getBizInfo("processType")=="human"){
+                        actionNameResult="开始处理";
+                   }
+                   actionNameResult;
+                ]]>
+
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到人" || x?.currnetStatus == "手动提交核保已分配到人" || x?.currnetStatus == "人工报价调价已分配到人" || x?.currnetStatus == "人工调价并提交核保已分配到人" || x?.currnetStatus == "提交核保异常已分配到人"|| x?.currnetStatus == "暂存异常已分配到人" || x?.currnetStatus == "查询异常已分配到人"|| x?.currnetStatus == "查询报价结果异常已分配到人" 
+                ]]>
+            </field>
+        </workflow>
+
+        <workflow id="quote_task_process">
+            <field name="jiraTaskType">
+                quoteTask
+            </field>
+				<field name="actionNameGroovyScriptFlag">
+                true
+            </field>
+
+            <field name="actionName">
+
+                <![CDATA[
+                   String actionNameResult=null;
+                   if(x?.getBizInfo("processType")=="robot"){
+                        actionNameResult="开始精灵录单";
+                   }else if(x?.getBizInfo("processType")=="human"){
+                        actionNameResult="开始处理";
+                   }
+                   actionNameResult;
+                ]]>
+
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到人" || x?.currnetStatus == "人工调价已分配到人" || x?.currnetStatus == "暂存异常已分配到人"  || x?.currnetStatus == "查询异常已分配到人"
+                ]]>
+            </field>
+        </workflow>
+
+        <workflow id="verify_task_process">
+            <field name="jiraTaskType">
+                verifyTask
+            </field>
+            <field name="actionName">
+                开始处理
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到人"
+                ]]>
+            </field>
+        </workflow>
+
+		<workflow id="payment_task_process">
+            <field name="jiraTaskType">
+                paymentTask
+            </field>
+            <field name="actionName">
+                开始手动处理
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                  (x?.currnetStatus == "已分配到组") && x?.getBizInfo("processType")=='human'
+                ]]>
+            </field>
+        </workflow>
+		
+		<workflow id="second_payment_task_process">
+            <field name="jiraTaskType">
+                secondPaymentTask
+            </field>
+            <field name="actionName">
+                开始处理
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到人" || x?.currnetStatus == "已分配到组"
+                ]]>
+            </field>
+        </workflow>
+        
+        <workflow id="printing_task_process">
+            <field name="jiraTaskType">
+                insPolicyPrintingTask
+            </field>
+            <field name="actionName">
+                开始打单
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.currnetStatus == "已分配到组" || x?.currnetStatus == "已分配到人"
+                ]]>
+            </field>
+        </workflow>
+        
+        <workflow id="underwrite_task_process">
+            <field name="jiraTaskType">
+                underwriteTask
+            </field>
+            <field name="actionName">
+                开始手动处理
+            </field>
+            <!--conditionGroovyScript 中有两个参数 一个x 表示taskbean 一个是y 表示业务对象 返回类型需要是 Boolean 如果是true 就推工作流 false就不推-->
+            <field name="conditionGroovyScript">
+                <![CDATA[
+                   x?.status == "已分配到组" && x?.getBizInfo("processType")=='human'
+                ]]>
+            </field>
+        </workflow>
+   
+    </workflows>
+</task-workflow-mapping>
