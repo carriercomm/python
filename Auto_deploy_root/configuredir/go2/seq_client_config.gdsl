@@ -1,0 +1,12 @@
+config {
+    http {
+        url = "http://{{seq_ip}}:10020"
+    }
+
+    akka {
+        url = "{{seq_ip}}"
+        port = 10019
+        config = "/data/www/ins_share/config/akka.conf"
+        service = "seq-service"
+    }
+}

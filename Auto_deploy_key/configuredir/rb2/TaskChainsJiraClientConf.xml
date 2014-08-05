@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<chains>
+
+    <!--事件类型-->
+    <on-start id="create" rootProcessor="jiraIssueCreate" />
+    <on-start id="update" rootProcessor="jiraIssueUpdate" />
+    <on-start id="delete" rootProcessor="jiraIssueDelete" />
+    <on-start id="query" rootProcessor="jiraIssueQuery" />
+    <on-start id="comment" rootProcessor="jiraIssueComment" />
+    <on-start id="metadata" rootProcessor="jiraIssueMetadate" />
+    <on-start id="workflow" rootProcessor="jiraIssueWorkFlow" />
+    <on-start id="issuemeta" rootProcessor="jiraIssueIssuemeta" />
+    <on-start id="event" rootProcessor="jiraIssueEvent" />
+    <on-start id="issueLinkCreate" rootProcessor="jiraIssueLinkCreate" />
+    <on-start id="issueLinkRemove" rootProcessor="jiraIssueLinkDelete" />
+    <on-start id="updateItems" rootProcessor="jiraIssueUpdateItems" />
+    <on-start id="queryCustomField" rootProcessor="jiraIssueQueryCustomField" />
+
+    <!--ICE消息处理-->
+    <on-start id="messageProcess" rootProcessor="jiraClientMessageProcess" />
+
+    <!--Jira路由查询-->
+    <on-start id="jiraRouteSearch" rootProcessor="JiraRouteSearchService" />
+
+    <processor id="JiraRouteSearchService">
+        <classname>com.baoxian.jira.taskchains.process.JiraRouteSearchService</classname>
+    </processor>
+
+    <processor id="jiraIssueUpdateItems">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueUpdateItems</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraUpdateItemsRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraClientMessageProcess">
+        <classname>com.baoxian.jira.taskchains.process.message.JiraClientMessageProcess</classname>
+        <attrmap>
+            <attr key="convert" value="com.baoxian.jira.taskchains.process.JiraDataConvertImpl" />
+            <attr key="messageProcess" value="com.baoxian.jira.taskchains.process.message.JiraMessageProcessTestImpl" />
+        </attrmap>
+    </processor>
+
+
+
+    <processor id="jiraIssueCreate">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueCreate</classname>
+        <attrmap>
+            <attr key="convert" value="com.baoxian.jira.taskchains.process.JiraDataConvertImpl" />
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueQuery">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueQuery</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueUpdate">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueUpdate</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueWorkFlow">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueWorkFlow</classname>
+        <attrmap>
+            <attr key="convert" value="com.baoxian.jira.taskchains.process.JiraDataConvertImpl" />
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueDelete">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueDelete</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueIssuemeta">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueIssueMeta</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueComment">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueComment</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueMetadate">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueMetadata</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueEvent">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueMetadata</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+            <attr key="convert" value="com.baoxian.jira.taskchains.process.JiraDataConvertImpl" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueLinkCreate">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueLinkCreate</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueLinkDelete">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueLinkDelete</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+    <processor id="jiraIssueQueryCustomField">
+        <classname>com.baoxian.jira.taskchains.process.event.JiraIssueQueryCustomField</classname>
+        <attrmap>
+            <attr key="fetcher" value="com.baoxian.jira.taskchains.process.JiraDataFetcherByRemoteCall" />
+        </attrmap>
+    </processor>
+
+
+</chains>

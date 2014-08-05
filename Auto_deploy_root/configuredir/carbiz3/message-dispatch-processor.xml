@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<processors>
+    <processor on="paymentTimeUpAlarm" className="com.baoxian.message.dispatch.core.processor.PaymentTimeUpAlarmMessageProcessor"/>
+</processors>

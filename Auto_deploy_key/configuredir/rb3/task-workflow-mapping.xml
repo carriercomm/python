@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--工作流具体流向参考http://kb.baoxian.in/pages/viewpage.action?pageId=84410565-->
+<task-workflow-mapping>
+    <tasks>
+        <!-- 车险投保总流程 -->
+        <task type="carInsureMainTask" name="车险投保总流程" enquriyId="obj?.multiQuoteId">
+            <state value="投保任务已创建">
+                <transition action="快速续保"/>
+                <transition action="非快速续保"/>
+            </state>
+            <state value="非快速续保">
+                <transition action="新流程"/>
+                <transition action="非新流程"/>
+            </state>
+            <state value="多方初审中">
+                <transition action="初审通过"/>
+                <transition action="初审不通过"/>
+                <transition action="初审转报价"/>
+            </state>
+            <state value="初审不通过">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="待提交报价">
+                <transition action="精确报价"/>
+            </state>
+            <state value="报价中">
+                <transition action="报价成功"/>
+                <transition action="报价失败"/>
+            </state>
+            <state value="报价失败">
+                <transition action="重新报价"/>
+                <transition action="投保关闭"/>
+            </state>
+            <state value="待提交核保">
+                <transition action="提交核保"/>
+                <transition action="重新报价"/>
+            </state>
+            <state value="核保中">
+                <transition action="核保成功"/>
+                <transition action="核保失败"/>
+            </state>
+            <state value="核保失败">
+                <transition action="重新核保"/>
+                <transition action="核保关闭"/>
+            </state>
+            <state value="待支付">
+                <transition action="重新核保"/>
+                <transition action="支付成功"/>
+                <transition action="支付失败"/>
+            </state>
+            <state value="支付成功">
+                <transition action="二次支付"/>
+                <transition action="非二次支付"/>
+            </state>
+            <state value="支付失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="二次支付中">
+                <transition action="二次支付成功"/>
+                <transition action="二次支付失败"/>
+            </state>
+            <state value="二次支付失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="承保中">
+                <transition action="承保通过"/>
+                <transition action="承保失败"/>
+            </state>
+            <state value="承保失败">
+                <transition action="投保关闭"/>
+            </state>
+            <state value="录单暂存中">
+                <transition action="暂存成功"/>
+            </state>
+            <state value="录单暂存成功">
+                <transition action="录单成功"/>
+            </state>
+            <state value="已关闭">
+            </state>
+        </task>
+
+        <task type="quoteTask" name="报价任务" enquriyId="obj?.enquiryId">
+            <state value="已分配到人">
+                <transition action="开始精灵录单" ruleExpression="true"/>
+            </state>
+            <state value="精灵录单中">
+                <transition action="录单完成" ruleExpression="true"/>
+            </state>
+            <state value="精灵录单完成">
+                <transition action="开始查询" ruleExpression="true"/>
+            </state>
+            <state value="精灵查询中">
+                <transition action="报价成功" ruleExpression="obj?.bizStatus=='success' &amp;&amp; obj?.taskStatus=='Finished'"/>
+                <transition action="拒绝承保" ruleExpression="obj?.bizStatus=='failed' &amp;&amp; obj?.taskStatus=='Finished'"/>
+            </state>
+            <state value="任务已关闭">
+                <transition action="重新报价" ruleExpression="true"/>
+            </state>
+        </task>
+        <task type="insureTask" name="核保任务" enquriyId="obj?.enquiryId">
+            <state value="已分配到人">
+                <transition action="开始精灵录单" ruleExpression="true" />
+            </state>
+            <state value="精灵录单中">
+                <transition action="录单完成" ruleExpression="true"/>
+            </state>
+            <state value="精灵录单完成">
+                <transition action="开始查询" ruleExpression="true"/>
+            </state>
+            <state value="精灵查询中">
+                <transition action="核保成功" ruleExpression="obj?.bizStatus=='success' &amp;&amp; obj?.taskStatus=='Finished'"/>
+                <transition action="拒绝承保" ruleExpression="obj?.bizStatus=='failed' &amp;&amp; obj?.taskStatus=='Finished'"/>
+            </state>
+            <state value="任务已关闭">
+                <transition action="重新核保" ruleExpression="true"/>
+            </state>
+        </task>
+    </tasks>
+
+    <!-- 规则：包括车险投保各流程 -->
+    <!--<rules>-->
+        <!--&lt;!&ndash; 自定义的Rule实现 demo &ndash;&gt;-->
+        <!--<rule id="r1" name="规则1" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>-->
+        <!--<rule id="r2" name="规则2" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>-->
+        <!--<rule id="r11" name="规则2" initParam="true" class="com.baoxian.jira.client.rule.RuleA"/>-->
+    <!--</rules>-->
+</task-workflow-mapping>

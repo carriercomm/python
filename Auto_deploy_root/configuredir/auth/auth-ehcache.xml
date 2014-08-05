@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache name="authCache" updateCheck="false">
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            memoryStoreEvictionPolicy="LFU">
+    </defaultCache>
+
+    <cache name="organizations"
+           maxElementsInMemory="20000"
+           overflowToDisk="false"
+           eternal="true">
+        <bootstrapCacheLoaderFactory class="com.baoxian.account.authentication.client.ehcache.MyBootstrapCacheLoaderFactory"  properties="async=false"/>
+        <!--terracotta/-->
+    </cache>
+    <cache name="eid2dnMap"
+           maxElementsInMemory="20000"
+           overflowToDisk="false"
+           eternal="true">
+        <!--terracotta/-->
+    </cache>
+    <cache name="comcode2dnMap"
+           maxElementsInMemory="20000"
+           overflowToDisk="false"
+           eternal="true">
+        <!--terracotta/-->
+    </cache>
+
+    <!--terracottaConfig url="10.68.3.211:9510"/-->
+
+</ehcache>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cron>
+    <groups>
+        <group name="group1">
+            <trigger name="trigger1" schedule="0 0 1 * * ?" />
+            <job name="job1" immediately="true" />
+        </group>
+
+    </groups>
+</cron>

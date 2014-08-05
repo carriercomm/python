@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache name="PublicCache">
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="1209600"
+            timeToLiveSeconds="1209600"
+            overflowToDisk="true"
+            diskSpoolBufferSizeMB="30"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+    <cache name="QuoteTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+        <searchable>
+            <searchAttribute name="id"/>
+            <searchAttribute name="priority"/>
+            <searchAttribute name="taskStatus"/>
+            <searchAttribute name="taskType"/>
+            <searchAttribute name="bizStatus"/>
+            <searchAttribute name="interfaceMode"/>
+            <searchAttribute name="processor"/>
+            <searchAttribute name="remark"/>
+            <searchAttribute name="transactionType"/>
+            <searchAttribute name="enquiryId"/>
+
+            <searchAttribute name="insCompanyId"/>
+            <searchAttribute name="comCode"/>
+            <searchAttribute name="insProvinceName"/>
+            <searchAttribute name="insProvinceCode"/>
+            <searchAttribute name="insCityName"/>
+            <searchAttribute name="insCityCode"/>
+            <searchAttribute name="insuredName"/>
+            <searchAttribute name="ownerName"/>
+            <searchAttribute name="plateNumber"/>
+            <searchAttribute name="providerId"/>
+            <searchAttribute name="flowId"/>
+            <searchAttribute name="accountId"/>
+            <searchAttribute name="insureWay"/>
+            <searchAttribute name="checked"/>
+            <searchAttribute name="isRecord"/>
+            <searchAttribute name="addon"/>
+            <searchAttribute name="multiQuoteId" />
+            <searchAttribute name="engineNo"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.quoteInfo?.vehicleInfo?.engineNo?.number"/>
+            <!--<searchAttribute name="dateCreated"/>-->
+            <!--<searchAttribute name="lastUpdated"/>-->
+            <!--<searchAttribute name="finishTime"/>-->
+            <searchAttribute name="dateCreated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.dateCreated ? new java.util.Date(value?.dateCreated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="lastUpdated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.lastUpdated ? new java.util.Date(value?.lastUpdated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="finishTime"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.finishTime ? new java.util.Date(value?.finishTime?.getTime()) : new java.util.Date()"/>
+        </searchable>
+    </cache>
+    <cache name="InsureTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+        <searchable>
+            <searchAttribute name="id"/>
+            <searchAttribute name="taskStatus"/>
+            <searchAttribute name="taskType"/>
+            <searchAttribute name="bizStatus"/>
+            <searchAttribute name="interfaceMode"/>
+            <searchAttribute name="processor"/>
+            <searchAttribute name="remark"/>
+            <searchAttribute name="transactionType"/>
+            <searchAttribute name="enquiryId"/>
+
+            <searchAttribute name="insCompanyId"/>
+            <searchAttribute name="comCode"/>
+            <searchAttribute name="insProvinceName"/>
+            <searchAttribute name="insProvinceCode"/>
+            <searchAttribute name="insCityName"/>
+            <searchAttribute name="insCityCode"/>
+            <searchAttribute name="insuredName"/>
+            <searchAttribute name="ownerName"/>
+            <searchAttribute name="plateNumber"/>
+            <searchAttribute name="providerId"/>
+            <searchAttribute name="flowId"/>
+            <searchAttribute name="businessPropNum"/>
+            <searchAttribute name="trafficPropNum"/>
+            <searchAttribute name="accountId"/>
+            <searchAttribute name="insureWay"/>
+            <searchAttribute name="addon"/>
+            <searchAttribute name="multiQuoteId"/>
+            <!--<searchAttribute name="dateCreated"/>-->
+            <!--<searchAttribute name="lastUpdated"/>-->
+            <!--<searchAttribute name="finishTime"/>-->
+            <searchAttribute name="dateCreated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.dateCreated ? new java.util.Date(value?.dateCreated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="lastUpdated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.lastUpdated ? new java.util.Date(value?.lastUpdated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="finishTime"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.finishTime ? new java.util.Date(value?.finishTime?.getTime()) : new java.util.Date()"/>
+        </searchable>
+    </cache>
+    <cache name="EdiTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+        <searchable>
+            <searchAttribute name="id"/>
+            <searchAttribute name="taskStatus"/>
+            <searchAttribute name="taskType"/>
+            <searchAttribute name="bizStatus"/>
+            <searchAttribute name="interfaceMode"/>
+            <searchAttribute name="processor"/>
+            <searchAttribute name="remark"/>
+            <searchAttribute name="transactionType"/>
+            <searchAttribute name="enquiryId"/>
+
+            <searchAttribute name="category"/>
+            <searchAttribute name="stage"/>
+            <searchAttribute name="solution"/>
+            <searchAttribute name="solutionDesc"/>
+            <searchAttribute name="reported"/>
+            <searchAttribute name="executor"/>
+            <!--<searchAttribute name="dateCreated"/>-->
+            <!--<searchAttribute name="lastUpdated"/>-->
+            <searchAttribute name="dateCreated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.dateCreated ? new java.util.Date(value?.dateCreated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="lastUpdated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.lastUpdated ? new java.util.Date(value?.lastUpdated?.getTime()) : new java.util.Date()"/>
+        </searchable>
+    </cache>
+    <cache name="VerifyTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+        <searchable>
+            <searchAttribute name="id"/>
+            <searchAttribute name="taskStatus"/>
+            <searchAttribute name="taskType"/>
+            <searchAttribute name="bizStatus"/>
+            <searchAttribute name="interfaceMode"/>
+            <searchAttribute name="processor"/>
+            <searchAttribute name="remark"/>
+            <searchAttribute name="transactionType"/>
+            <searchAttribute name="enquiryId"/>
+
+            <searchAttribute name="multiQuoteId"/>
+            <searchAttribute name="insProvinceName"/>
+            <searchAttribute name="insProvinceCode"/>
+            <searchAttribute name="insCityName"/>
+            <searchAttribute name="insCityCode"/>
+            <searchAttribute name="insuredName"/>
+            <searchAttribute name="ownerName"/>
+            <searchAttribute name="plateNumber"/>
+            <searchAttribute name="accountId"/>
+            <searchAttribute name="insureWay"/>
+            <!--<searchAttribute name="dateCreated"/>-->
+            <!--<searchAttribute name="lastUpdated"/>-->
+            <!--<searchAttribute name="finishTime"/>-->
+            <searchAttribute name="dateCreated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.dateCreated ? new java.util.Date(value?.dateCreated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="lastUpdated"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.lastUpdated ? new java.util.Date(value?.lastUpdated?.getTime()) : new java.util.Date()"/>
+            <searchAttribute name="finishTime"
+                             class="com.baoxian.task.manager.search.TaskAttributeExtractor"
+                             properties="expression=value?.finishTime ? new java.util.Date(value?.finishTime?.getTime()) : new java.util.Date()"/>
+        </searchable>
+    </cache>
+    <cache name="SerializationCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+
+	<cache name="VehicleEnquiryCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="604800"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+        <searchable>
+            <searchAttribute name="id"/>
+            <searchAttribute name="multiQuoteId"/>
+        </searchable>
+    </cache>
+	<cache name="multiQuote"
+         maxElementsInMemory="10000"
+         maxElementsOnDisk="0"
+         eternal="false"
+         timeToIdleSeconds="86400"
+         timeToLiveSeconds="604800"
+         memoryStoreEvictionPolicy="LFU">
+    <terracotta consistency="strong"/>
+  </cache>
+     <cache name="TaskBeanCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+	 <terracotta consistency="strong"/>
+ </cache>
+ <terracottaConfig url="10.143.76.211:9510,10.143.72.240:9510"/>
+</ehcache>
