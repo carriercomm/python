@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>$sysconf['name']</title>
+<link rel="stylesheet" href="static/css/all.css" type="text/css" media="screen" />
+<style type="text/css">
+
+.systemList {/* width: 960px; margin:40px auto*/ padding: 40px; }
+.systemList ul { overflow: hidden; }
+.systemList ul li { width: 240px; float: left; padding-bottom: 20px; }
+.systemList ul li .item { background: #f7f7f7; width: 90%; margin: 0 auto; padding: 10px 0 0; border-radius: 10px; overflow: hidden; }
+.systemList ul li .item .img { height: 100px; width: 180px; margin: 0 auto; background: #fff; padding: 10px; text-align: center; }
+.systemList ul li .item h3 { padding: 10px; text-align: center; border-bottom: 1px solid #eee; }
+.systemList ul li .item p { padding: 10px; color: #777; font-size: .9em; height: 60px; border-top: 1px solid #fff; border-bottom: 1px solid #eee; }
+.systemList ul li .item a { display: block; padding: 10px; border-top: 1px solid #fff; text-align: center; background: #eee; color:#777 }
+.systemList ul li .item a:hover { background: #06c; color: #fff; }
+#footer { position: fixed; bottom: 0; right: 0; left: 0; height: 30px; color: #777; background: #f7f7f7; font-size: .8em; line-height: 30px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="wrapper">
+    <div id="head">
+        <div id='top1'><span class='l'>$sysconf['name']</span></div>
+	    <div id='nav'>
+		    <ul>
+			    <li><a href='/index'>首页</a></li>
+			    <li><a href='/main'>服务器列表</a></li>
+			    <li><a href='/apply'>应用列表</a></li>
+			    <li><a href='/projectlist'>项目分布</a></li>
+			    <li><a href='/citylist'>城市分布</a></li>
+			    <li><a href='/idclist'>IDC分布</a></li>
+			    <li><a href='/userlist'>用户列表</a></li>
+			    <li>
+					&nbsp;快捷操作<span style="font-size:12px">↓</span>
+					<ul style="border-radius: 0px 0px 6px 6px !important; z-index: 0;">
+						<li><a href="/muser?action=mu&uid=$session['uid']">修改密码</a></li>
+						<li><a href="/main?action=lastupdate">最近更新</a></li>
+						$if session['privilege'] == 2:
+							<li><a href='/export'>导出数据</a></li>
+							<li><a href='/register'>添加用户</a></li>
+						$if session['privilege'] > 0:
+							<li><a href='/history'>删除记录</a></li>
+							<li><a href='/addhost'>添加新主机</a></li>
+					</ul>
+				</li>
+			    <li class="r">您好：<a href="/muser?action=mu&uid=$session['uid']">$session['username']</a> | <a href='/logout'> 退出</a></li>
+		    </ul>
+	    </div>
+    </div>
+
+<div id="content">
+    <div class="systemList">
+ <ul>
+        <li>
+          <div class="item">
+          <div class="img"><img src="static/images/xitongguanli.jpg"></div>
+          <a href="sysview">系统概况</a>
+          </div>
+        </li>
+        <li>
+          <div class="item">
+          <div class="img"><img src="static/images/idc.jpg"></div>
+          <a href="idclist">IDC管理</a>
+          </div>
+        </li>
+          <li>
+          <div class="item">
+            <div class="img"><img src="static/images/fuwuqi.jpg"></div>
+            <a href="main">服务器管理</a> </div>
+        </li>
+        <li>
+          <div class="item">
+            <div class="img"><img src="static/images/yumingguanli.jpg"></div>
+            <a href="#">域名管理</a> </div>
+        </li>
+          <li>
+          <div class="item">
+            <div class="img"><img src="static/images/yingyongguanli.jpg"></div>
+            <a href="apply">应用管理</a> </div>
+        </li>
+          <li>
+          <div class="item">
+            <div class="img"><img src="static/images/xiangmuguanli.jpg"></div>
+            <a href="projectlist">项目管理</a> </div>
+        </li>
+          <li>
+          <div class="item">
+            <div class="img"><img src="static/images/chengshifenbu.jpg"></div>
+            <a href="citylist">城市分布</a> </div>
+        </li>
+                    <li>
+          <div class="item">
+            <div class="img"><img src="static/images/yonghuguanli.jpg"></div>
+            <a href="userlist">用户管理</a> </div>
+        </li>
+                    <li>
+          <div class="item">
+            <div class="img"><img src="static/images/mimaguanli.jpg"></div>
+            <a href="passwd">密码管理</a> </div>
+        </li>
+
+           <li>
+          <div class="item">
+            <div class="img"><img src="static/images/beifenguanli.jpg"></div>
+            <a href="#">备份管理</a> </div>
+        </li>
+           <li>
+          <div class="item">
+            <div class="img"><img src="static/images/zhengshuguanli.jpg"></div>
+            <a href="#">证书管理</a> </div>
+        </li>
+                     <li>
+          <div class="item">
+            <div class="img"><img src="static/images/jiankongguanli.jpg"></div>
+            <a href="#">监控管理</a> </div>
+        </li>
+                               <li>
+          <div class="item">
+            <div class="img"><img src="static/images/jishuguanli.jpg"></div>
+            <a href="#">技术管理</a> </div>
+        </li>
+      </ul>
+    </div>
+  <div id="footer">保网版权所有 | 如需帮助，请联系研发中心 </div>
+</div>
+</body>
+</html>

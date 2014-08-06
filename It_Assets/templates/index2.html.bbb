@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title> $sysconf['name'] | 首页</title>
+
+<style type="text/css">
+* { margin: 0; padding: 0; list-style: none;font-size:100%}
+body{ font-family:Arial, Helvetica, sans-serif;}
+a{ text-decoration:none; color:#06c}
+#header{ height:60px; background:#1261ae url(images/logo.png) 10px center no-repeat;}
+#header h1{ color:#fff; font-size:2em; line-height:60px; padding-left:200px;}
+.systemList {/* width: 960px; margin:40px auto*/ padding:40px;}
+.systemList ul { overflow: hidden;}
+.systemList ul li { width: 240px; float: left;padding-bottom:20px;}
+.systemList ul li .item { background:#f7f7f7; width: 90%; margin: 0 auto; padding:10px 0 0; border-radius:10px; overflow: hidden; }
+.systemList ul li .item .img{ height:100px; width:180px; margin:0 auto; background:#fff; padding:10px; text-align:center;}
+.systemList ul li .item h3{ padding:10px; text-align:center; border-bottom:1px solid #eee;}
+.systemList ul li .item p{ padding:10px; color:#777; font-size:.9em; height:60px;border-top:1px solid #fff;border-bottom:1px solid #eee;}
+.systemList ul li .item a{ display:block; padding:10px;border-top:1px solid #fff; text-align:center; background:#e8f4ff}
+.systemList ul li .item a:hover{ background:#06c; color:#fff;}
+#footer{ position:absolute; bottom:0;right:0; left:0; height:30px; color:#777; background:#f7f7f7; font-size:.8em; line-height:30px; text-align:center;}
+</style>
+</head>
+<body>
+<body id="login" bgcolor="red">
+    <div id="login-wrapper" class="png_bg">
+ 	    <div id="login-top">
+		    <span style="font-weight:bold; font-size:30px;padding-right:50px;">$sysconf['name']</span>
+		</div>
+  <div id="mainBody">
+    <div class="systemList">
+      <ul>
+        <li>
+          <div class="item">
+          <div class="img"><img src="static/images/jifang.jpg" /></div>
+          <h3>机房管理</h3>
+          <p> 	Windows（2008）/Linux（64位 Red Hat 5.4）</p>
+          <a href="#">进入管理</a>
+          </div>
+        </li><li>
+          <div class="item">
+            <div class="img"><img src="static/images/fuwuqi.jpg" /></div>
+            <h3>服务器管理</h3>
+            <p> Windows（2008）/Linux（64位 Red Hat 5.4）</p>
+            <a href="#">进入管理</a> </div>
+        </li>
+        <li>
+          <div class="item">
+            <div class="img"><img src="static/images/yuming.jpg" /></div>
+            <h3>域名管理</h3>
+            <p> Windows（2008）/Linux（64位 Red Hat 5.4）</p>
+            <a href="#">进入管理</a> </div>
+        </li><li>
+          <div class="item">
+            <div class="img"><img src="static/images/yingyong.jpg" /></div>
+            <h3>应用管理</h3>
+            <p> Windows（2008）/Linux（64位 Red Hat 5.4）</p>
+            <a href="#">进入管理</a> </div>
+        </li><li>
+          <div class="item">
+            <div class="img"><img src="static/images/T1wh1VFi4dXXczEjjs-95-90.jpg" /></div>
+            <h3>xxx管理</h3>
+            <p> Windows（2008）/Linux（64位 Red Hat 5.4）</p>
+            <a href="#">进入管理</a> </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="footer">保网版权所有 | 如需帮助，请联系研发中心 </div>
+</div>
+</body>
+</html>

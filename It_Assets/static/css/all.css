@@ -1,0 +1,64 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0 none; font-family: inherit; font-size: 100%; font-style: inherit; font-weight: inherit; margin: 0; outline: 0 none; padding: 0; vertical-align: baseline; list-style:none;}
+
+
+
+body { background: none repeat scroll 0 0 #f3f3f3; color: black; height: 100%; _height: 100%; margin: 0; padding: 0; }
+table { border-collapse: separate; border-spacing: 0; border-radius: 6px 6px 6px 6px !important; }
+div { display: block; }
+input { background: none repeat scroll 0 0 #FFFFFF; border: 1 red; }
+#wrapper { width: 100%; margin: auto; min-height: 100%; _height: 100%; }
+html #wrapper { height: 100%; }
+a{ text-decoration: none; color: #777; }
+a:hover { color: #CD0200; text-decoration: underline; }
+#head {}
+#top1 { font-size: 20px; line-height:60px; background:#115fad url(../images/logo.png) no-repeat 10px center;}
+#nav { overflow:hidden; background:#eee; padding:0 20px;}
+#nav ul li { float:left; color:#777; padding:10px}
+#nav ul li a { display:inline-block; font-size:16px; padding:0 10px;}
+#nav ul li a:hover { color:#000;}
+#nav ul li ul { display: none; }
+#nav ul li:hover ul { display: block; position: absolute;background:#eee;}
+#nav ul li ul li { float:none; text-align:center;}
+#nav ul li ul li a { color: #444; font-size: 14px; }
+#nav ul li ul li a:hover {}
+.l{ color:#fff; font-size:24px; padding-left:180px;}
+.r { float: right !important; font-size: 14px; color: #ffffff; }
+#main { padding:20px; background:#fff;}
+#main table { width: 100%; table-layout: fixed;font-size: 14px;  }
+#main table th { border: 1px solid #F3F3F3; color: #000000; text-align: center; height: 30px; line-height: 30px; overflow: hidden; font-weight: bold; }
+#main table td { padding:5px; text-align:center}
+#main table a{ color:#115fad; text-decoration:underline}
+#page_nav { padding-left: 50px; }
+.tr-row { background: none repeat scroll 0 0 #F3F3F3; }
+#nav { }
+#content { background:#fff; padding:40px;}
+#content table { margin:0 auto; width:600px; border:1px solid #ddd; box-shadow:#ccc 0 0 10px; margin-bottom:10px;}
+#content tr td { padding:10px; border-bottom:1px solid #eee;}
+#content tr:hover td{ background:#f7f7f7}
+#content tr th { background:#eee; color:#777; padding:10px;}
+#content tr h1 { color:#000; font-weight:bold; }
+#content tr td input { }
+#content tr td p { padding:5px}
+#content tr td label {}
+#content tr td select { }
+#content tr td span {}
+#content tr td textarea {}
+.beizhu { vertical-align: top; height: 110px !important; line-height: 10px !important; }
+.c { padding-left: 80px; padding-top: 10px; padding-bottom: 10px; }
+.zhushi { font-size: 12px; color: red; }
+.w { width: 80px; }
+.center { text-align: center; }
+#content table tr td table { width: 100%; margin: 0px; padding: 0px; border: none; }
+#content table tr td table tr th { padding: 0px; margin: 0px; }
+#content table tr td table tr td { padding: 0px; margin: 0px; height: 20px; word-break: keep-all; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+#content table tr td table tr td input { padding: 0px; margin-left: 5px; width: 90%; height: 100%; line-height: 100%; border: none; font-size: 14px; }
+.short { width: 100% !important; margin: 0px !important; text-align: center; }
+.button, select, form input, form textarea, .button { border-radius: 4px 4px 4px 4px !important; }
+.button { background:#115fad; padding:5px 10px; color:#fff; cursor:pointer}
+form input, form textarea { border: 1px solid #D5D5D5; }
+.button2 { background:#115fad; padding:2px 5px; color:#fff; cursor:pointer}
+.bold { color: #000; font-weight: bold; }
+.big { width: 350px; position: fixed; bottom: 0px; left: 38%; }
+.min { margin: 0 auto; width: 100px; height: 25px; background: url("../images/search.png") no-repeat; }
+.max { margin: 0 auto; text-align: center; height: 40px; border-radius: 6px 6px 0px 0px; background: #fff; display: none; }
+.add { padding-top: 130px !important; }

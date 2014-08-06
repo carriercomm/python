@@ -1,0 +1,79 @@
+$def with(project,idc)
+<div id="content" style="height:120% !important;">
+<form action='' method="post">
+
+<table>
+	<tr>
+		<td colspan=2><h1><b>添加应用</b></h1></td>
+	</tr>
+		<tr>
+		<td><label>站点名称</label></td>
+		<td><input type="text" name="sitename" /> <span class="zhushi">*</span></td>
+	</tr>
+	<tr>
+		<td><label> I D C <label></td>
+		<td><select name='idc'>
+		$for i in idc
+			<option value='$i.iid'>$i.idcname</option>
+		</select>
+		</td>
+	</tr>
+
+	<tr>
+		<td><label>项<span style="color:#ffffff;">☺ </span>目</label></td>
+		<td><select name='project'>
+		$for p in project:
+			<option value='$p.pid'>$p.project</option>
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td><label>服务器IP</label></td>
+		<td><input type="text" name="machineip" /> <span class="zhushi">*</span></td>
+	</tr>
+	<tr>
+		<td><label>应用软件</label></td>
+		<td><input type="text" name="sofeware" /></td>
+	</tr>
+	<tr>
+		<td><label>数据目录</label></td><td><input type="text" name="datadir" /></td>
+	</tr>
+	<tr>
+		<td><label>启动脚本</label></td><td><input type="text" name="startscrite" /></td>
+	</tr>
+	<tr>
+	 <td><label>监听端口</label></td><td><input type="text" name="port" /></td>
+	</tr>
+	<tr>
+	 <td><label>数据库连接配置文件</label></td><td><input type="text" name="mysql_conf" /></td>
+	</tr>
+	<tr>
+	 <td><label>数据库服务器IP</label></td><td><input type="text" name="mysql_ip" /></td>
+	</tr>
+	<tr>
+	 <td><label>数据库软件</label></td><td><input type="text" name="mysql_stype" /></td>
+	</tr>
+	<tr>
+	 <td><label>数据库名称</label></td><td><input type="text" name="mysql_name" /></td>
+	</tr>
+	<tr>
+	 <td><label>账<span style="color:#ffffff;">☺ </span>号</label></td><td><input type="text" name="mysql_use" /></td>
+	</tr>
+	<tr>
+	 <td><label>密<span style="color:#ffffff;">☺ </span>码</label></td><td><input type="text" name="mysql_pw" /></td>
+	</tr>
+	<tr>
+	 <td><label>开发人员</label></td><td><input type="text" name="dev_name" /></td>
+	</tr>
+	<tr>
+	 <td><label>备<span style="color:#ffffff;">☺ </span>注</label></td><td><input type="text" name="other" /></td>
+	</tr>
+	<tr>
+	 <td colspan=2 class='c'><input type="submit"  style="width:60px;" class='button' name="add_host" value="添 加" /></td>
+	</tr>
+</table>
+</form>
+</div>
+
+</div>
+

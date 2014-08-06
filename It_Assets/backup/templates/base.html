@@ -1,0 +1,91 @@
+$def with(page)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<title>$sysconf['name']</title>
+<link rel="stylesheet" href="static/css/all.css" type="text/css" media="screen" />
+<script type="text/javascript" src="static/js/my97date/WdatePicker.js"></script>
+<script type="text/javascript" src="static/js/jquery.js"></script>
+<script type="text/javascript" src="static/js/scrolltop.js"></script>
+<script type="text/javascript" src="static/js/float.js"></script>
+<script language="javascript">
+<!--
+function senfe(o,a,b,c,d){
+ var t=document.getElementById(o).getElementsByTagName("tr");
+ for(var i=0;i<t.length;i++){
+  t[i].style.backgroundColor=(t[i].sectionRowIndex%2==0)?a:b;
+  t[i].onmouseover=function(){
+   if(this.x!="1")this.style.backgroundColor=c;
+  }
+  t[i].onmouseout=function(){
+   if(this.x!="1")this.style.backgroundColor=(this.sectionRowIndex%2==0)?a:b;
+  }
+ }
+}
+-->
+</script>
+<!--
+本系统由 Steven 独立编写，开源分享给所有需要的朋友使用。
+http://johnsteven.blog.51cto.com/2523007/1048968
+-->
+</head>
+<body>
+<div id="wrapper">
+    <div id="head">
+        <div id='top1'><span class='l'>$sysconf['name']</span></div>
+	    <div id='nav'>
+		    <ul>
+			    <li><a href='/index'>首页</a></li>
+			    <li><a href='/main'>服务器列表</a></li>
+			    <li><a href='/projectlist'>项目分布</a></li>
+			    <li><a href='/citylist'>城市分布</a></li>
+			    <li><a href='/idclist'>IDC分布</a></li>
+			    <li><a href='/userlist'>用户列表</a></li>
+			    <li>
+					&nbsp;快捷操作<span style="font-size:12px">↓</span>
+					<ul style="border-radius: 0px 0px 6px 6px !important; z-index: 0;">
+						<li><a href="/muser?action=mu&uid=$session['uid']">修改密码</a></li>
+						<li><a href="/main?action=lastupdate">最近更新</a></li>
+						$if session['privilege'] == 2:
+							<li><a href='/export'>导出数据</a></li>
+							<li><a href='/register'>添加用户</a></li>
+						$if session['privilege'] > 0:
+							<li><a href='/history'>删除记录</a></li>
+							<li><a href='/addhost'>添加新主机</a></li>
+					</ul>
+				</li>	
+			    <li class="r">您好：<a href="/muser?action=mu&uid=$session['uid']">$session['username']</a> | <a href='/logout'> 退出</a></li>
+		    </ul>
+	    </div>
+    </div>
+$:page
+</div>
+
+<!-- 搜索窗口-->
+<div class='big'>
+    <div class='min'></div>
+    <div class='max'>
+        <form action='/search' method='get'>
+        <p style='padding:10px'>
+        <select name='ops' style='width:auto;'>
+                <option value='1'>主机标识</option>
+                <option value='2'>IP地址</option>
+                <option value='5'>端 口</option>
+                <option value='7'>带 宽</option>
+                <option value='8'>用 途</option>
+                <option value='9'>操作系统</option>
+                <option value='10'>所属公司</option>
+                <option value='11'>详细硬件信息</option>
+                <option value='12'>备注</option>
+                <option value='13'>修改人</option>
+        </select>
+        <input type='text' name='word' />
+        <input type='submit' class='button2' value='Go' />
+        </p>
+        </form>
+    </div>
+</div> 
+
+</body>
+</html>

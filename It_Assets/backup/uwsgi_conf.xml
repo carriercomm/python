@@ -1,0 +1,16 @@
+<uwsgi id="app">
+        <socket>127.0.0.1:9090</socket>
+        <module>app</module>
+        <master />
+        <pythonpath>/usr/bin/python</pythonpath>
+        <chdir>/data/wwwroot/yunwei</chdir>
+        <processes>4</processes>
+        <enable-threads>true</enable-threads>
+        <post-buffering>1024</post-buffering>
+        <listen>1024</listen>
+        <memory-report/>
+        <pidfile>/tmp/uwsgi_app.pid</pidfile>
+        <max-requests>65535</max-requests>
+        <daemonize>/data/wwwroot/yunwei/access.log</daemonize>
+        <log-date/>
+</uwsgi>

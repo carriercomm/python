@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>保网网站服务类入口</title>
+<style type="text/css">
+* { margin:0; padding:0; list-style:none; }
+body { background:#f7f7f7; font-size:12px; color:#444; }
+a { color:#115fad; text-decoration:none; }
+#header { padding:10px; background:#fff; border-bottom:1px solid #f7f7f7;}
+#mainBody { padding:20px; border-top:1px solid #fff; }
+#footer { padding:10px 0; width:100%; background:#eee; }
+#footer strong { padding-left:20px; }
+h1{ display:block; position:absolute; right:20px; top:20px;}
+h2 { background:#eee;padding:10px;}
+h3 { font-size:16px; }
+h4 { color:#999 }
+ul { padding:10px; overflow:hidden; _height:1; zoom:1; }
+ul li { float:left; width:350px; padding:10px }
+ul li a { display:block; padding:10px; background:#fff; border-bottom:2px solid #eee; border-right:2px solid #eee; }
+ul li a:hover { background:#FFFAE2 }
+</style>
+</head>
+<body>
+<div id="container">
+  <div id="header">
+    <div class="logo"><h1>保网网站服务类入口</h1><img src="http://img.baoxian.com/images/default/logo.gif" alt="保网" />
+      
+    </div>
+  </div>
+  <div id="mainBody">
+    <h2>B2C生产系统网站入口</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://www.baoxian.com	">
+        <h3> B2C交易站 </h3>
+        <h4> http://www.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://t.baoxian.com	">
+        <h3> 代理点旅游险出单系统 </h3>
+        <h4> http://t.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://zixun.baoxian.com	">
+        <h3> 资讯站 </h3>
+        <h4> http://zixun.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://bbs.baoxian.com	">
+        <h3> 论坛 </h3>
+        <h4> http://bbs.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://www.ins.com.cn	">
+        <h3> 老保网 </h3>
+        <h4> http://www.ins.com.cn </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://jf.ins.com.cn	">
+        <h3> 积分商城 </h3>
+        <h4> http://jf.ins.com.cn </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://jfadmin.ins.com.cn	">
+        <h3> 积分管理后台 </h3>
+        <h4> http://jfadmin.ins.com.cn </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://jfcj.ins.com.cn	">
+        <h3> 积分抽奖 </h3>
+        <h4> http://jfcj.ins.com.cn </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://sig.ins.baoxian.com	">
+        <h3> 阳光车险旗舰店 </h3>
+        <h4> http://sig.ins.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://95550.ins.baoxian.com	">
+        <h3> 天平汽车保险网上旗舰店 </h3>
+        <h4> http://95550.ins.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cpic.ins.baoxian.com	">
+        <h3> 太平洋车险网上旗舰店
+          </h3>
+        <h4> http://cpic.ins.baoxian.com </h4>
+        </a></li>
+    </ul>
+    <h2>B2C内测网站入口（研发测试）</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://www.baoxan.net	">
+        <h3> B2C交易站 </h3>
+        <h4> http://www.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://admin.baoxan.net	">
+        <h3> 保网功能管理后台 </h3>
+        <h4> http://admin.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://t.baoxan.net	">
+        <h3> 代理点旅游险出单系统 </h3>
+        <h4> http://t.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://bbs.baoxan.net	">
+        <h3> B2C论坛 </h3>
+        <h4> http://bbs.baoxan.net </h4>
+        </a></li>
+    </ul>
+    <h2>B2C公测网站入口（业务测试）</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://www.baoxan.org	">
+        <h3> B2C交易站 </h3>
+        <h4> http://www.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://admin.baoxan.org	">
+        <h3> 功能管理后台 </h3>
+        <h4> http://admin.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://zixun.baoxan.org	">
+        <h3> 资讯站 </h3>
+        <h4> http://zixun.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://t.baoxan.org	">
+        <h3> 代理点旅游险出单系统 </h3>
+        <h4> http://t.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://pt.baoxan.org	">
+        <h3> B2B原型设计 </h3>
+        <h4> http://pt.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://bangbang.baoxan.org	">
+        <h3> 邦邦资讯站 </h3>
+        <h4> http://bangbang.baoxan.org </h4>
+        </a></li>
+    </ul>
+    
+    <h2>B2B生产系统网站入口</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://go2.baoxian.com	">
+        <h3> B2B交易站(0.8版本）</h3>
+        <h4> http://go2.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cm.baoxian.in	">
+        <h3> 车险业务操作后台系统 </h3>
+        <h4> http://cm.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://task.baoxian.in:8080	">
+        <h3> 保网运营任务调度系统 </h3>
+        <h4> http://task.baoxian.in:8080 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cipm.baoxian.in	">
+        <h3> 车险供应商管理后台 </h3>
+        <h4> http://cipm.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://ssogo.baoxian.com	">
+        <h3> 代理人sso服务系统 </h3>
+        <h4> http://ssogo.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://sso.baoxian.in	">
+        <h3> 业管sso服务系统 </h3>
+        <h4> http://sso.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://atm.baoxian.in	">
+        <h3> 账号及设备管理后台 </h3>
+        <h4> http://atm.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://auth.zzb.baoxian.com	">
+        <h3> 大唐终端认证系统 </h3>
+        <h4> http://auth.zzb.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://ccm.b2b.baoxian.in	">
+        <h3> B2B呼叫中心系统 </h3>
+        <h4> http://ccm.b2b.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cx.baoxian.com	">
+        <h3> 车型库系统</h3>
+        <h4> http://cx.baoxian.com </h4>
+        </a></li>
+        <li><a taregt="blank" href="	http://ci.baoxian.com	">
+        <h3> 影像系统 </h3>
+        <h4> http://ci.baoxian.com </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://pci.baoxian.com	">
+        <h3> 影像处理器</h3>
+        <h4> http://pci.baoxian.com </h4>
+        </a></li>
+    </ul>
+    <h2>B2B内测网站入口（研发测试）</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://go2.baoxian.net	">
+        <h3> B2B交易站(0.8版本）</h3>
+        <h4> http://go2.baoxian.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cm.baoxan.net	">
+        <h3> 车险业务操作后台系统 </h3>
+        <h4> http://cm.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://task.baoxan.net:8080	">
+        <h3> 保网运营任务调度系统 </h3>
+        <h4> http://task.baoxan.net:8080 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cipm.baoxan.net	">
+        <h3> 车险供应商管理后台 </h3>
+        <h4> http://cipm.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://goauth.baoxan.net	">
+        <h3> 代理人sso服务系统 </h3>
+        <h4> http://goauth.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://mauth.baoxan.net	">
+        <h3> 业管sso服务系统 </h3>
+        <h4> http://mauth.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://atm.baoxan.net	">
+        <h3> 账号及设备管理后台 </h3>
+        <h4> http://atm.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://auth.zzb.baoxan.net	">
+        <h3> 大唐终端认证系统 </h3>
+        <h4> http://auth.zzb.baoxna.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://ccm.b2b.bapxan.net	">
+        <h3> B2B呼叫中心系统 </h3>
+        <h4> http://ccm.b2b.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cx.baoxan.net	">
+        <h3> 车型库系统</h3>
+        <h4> http://cx.baoxan.net </h4>
+        </a></li>
+        <li><a taregt="blank" href="	http://ci.baoxan.net	">
+        <h3> 影像系统 </h3>
+        <h4> http://ci.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://pci.baoxan.net	">
+        <h3> 影像处理器</h3>
+        <h4> http://pci.baoxan.net </h4>
+        </a></li>
+    </ul>
+    <h2>B2B公测网站入口（业务测试）</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://go2.baoxian.org	">
+        <h3> B2B交易站(0.8版本）</h3>
+        <h4> http://go2.baoxian.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cm.baoxan.org	">
+        <h3> 车险业务操作后台系统 </h3>
+        <h4> http://cm.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://task.baoxan.org:8080	">
+        <h3> 保网运营任务调度系统 </h3>
+        <h4> http://task.baoxan.org:8080 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cipm.baoxan.org	">
+        <h3> 车险供应商管理后台 </h3>
+        <h4> http://cipm.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://goauth.baoxan.org	">
+        <h3> 代理人sso服务系统 </h3>
+        <h4> http://goauth.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://mauth.baoxan.org	">
+        <h3> 业管sso服务系统 </h3>
+        <h4> http://mauth.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://atm.baoxan.org	">
+        <h3> 账号及设备管理后台 </h3>
+        <h4> http://atm.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://auth.zzb.baoxan.org	">
+        <h3> 大唐终端认证系统 </h3>
+        <h4> http://auth.zzb.baoxna.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://ccm.b2b.bapxan.org	">
+        <h3> B2B呼叫中心系统 </h3>
+        <h4> http://ccm.b2b.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://cx.baoxan.org	">
+        <h3> 车型库系统</h3>
+        <h4> http://cx.baoxan.org </h4>
+        </a></li>
+        <li><a taregt="blank" href="	http://ci.baoxan.org	">
+        <h3> 影像系统 </h3>
+        <h4> http://ci.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://pci.baoxan.org	">
+        <h3> 影像处理器</h3>
+        <h4> http://pci.baoxan.org </h4>
+        </a></li>
+    </ul>
+    </ul>
+    <h2>服务入口类网站</h2>
+    <ul>
+      <li><a taregt="blank" href="	http://call.baoxan.org:8080	">
+        <h3> 保网运营任务调度系统（生产系统） </h3>
+        <h4> http://call.baoxan.org:8080 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://10.68.3.152/svn ">
+        <h3> svn服务器 </h3>
+        <h4> http://10.68.3.152/svn
+          </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://bug.baoxian.in	">
+        <h3> 保网软件需求及缺陷跟踪系统 </h3>
+        <h4> http://bug.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://syslog.baoxan.net	">
+        <h3> 内网日志系统 </h3>
+        <h4> http://syslog.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://syslog.baoxian.in	">
+        <h3> 外网日志系统 </h3>
+        <h4> http://syslog.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://kb.baoxian.in	">
+        <h3> 保网知识库系统 </h3>
+        <h4> http://kb.baoxian.in </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://10.68.3.186/phpldapadmin44	">
+        <h3> 外网ldap WEB登陆入口(jira)
+           </h3>
+        <h4> http://10.68.3.186/phpldapadmin44 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://10.68.3.186/phpldapadmin52	">
+        <h3> 外网ldap WEB登陆入口(B2B)
+          </h3>
+        <h4> http://10.68.3.186/phpldapadmin52 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://10.68.3.186/phpldapadmin153	">
+        <h3> 内网ldap WEB登陆入口
+           </h3>
+        <h4> http://10.68.3.186/phpldapadmin153 </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://pt.baoxan.net	">
+        <h3> B2B设计原型展示 </h3>
+        <h4> http://pt.baoxan.net </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://maven.baoxan.org	">
+        <h3> maven系统 </h3>
+        <h4> http://maven.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	http://im.baoxan.org	">
+        <h3> PM服务器 </h3>
+        <h4> http://im.baoxan.org </h4>
+        </a></li>
+      <li><a taregt="blank" href="	\\10.68.3.175	">
+        <h3> 文件服务器 </h3>
+        <h4> \\10.68.3.175 </h4>
+        </a></li>
+    </ul>
+  </div>
+  <div id="footer"> <strong>保网版权所有 | 如需帮助，请联系研发中心</strong> </div>
+</div>
+</body>
+</html>
