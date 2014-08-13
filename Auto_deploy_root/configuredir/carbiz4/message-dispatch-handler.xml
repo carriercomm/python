@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<handlers>
-    <handler on="timeUpCallback" className="com.baoxian.message.dispatch.core.handler.TimeUpMessageHandler"/>
-</handlers>
