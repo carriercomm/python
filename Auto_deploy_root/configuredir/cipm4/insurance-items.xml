@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item name="车辆损失险" code="VehicleDemageIns" order="10" inputType="select" type="主险" range="车辆保障" dependsOn="" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加车辆损失险不计免赔" code="NcfVehicleDemageIns" order="20" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="全车盗抢险" code="TheftIns" order="30" inputType="select" type="主险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加全车盗抢险不计免赔" code="NcfTheftIns" order="40" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="TheftIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="玻璃单独破碎险" code="GlassIns" order="50" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">国产玻璃</option>
+            <option value="2" order="2">进口玻璃</option>
+            <option value="0" order="3">不投保</option>
+        </value>
+    </item>
+
+    <item name="自燃损失险" code="CombustionIns" order="60" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加自燃损失险不计免赔" code="NcfCombustionIns" order="70" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="CombustionIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="自燃免除特约" code="CombustionExclusionCla" order="80" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="CombustionIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="车身划痕险" code="ScratchIns" order="90" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="2000" order="1">2000</option>
+            <option value="5000" order="2">5000</option>
+            <option value="10000" order="3">1万</option>
+            <option value="20000" order="4">2万</option>
+            <option value="0" order="5">不投保</option>
+        </value>
+    </item>
+    <item name="附加车身划痕险不计免赔" code="NcfScratchIns" order="100" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="ScratchIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="涉水损失险" code="WadingIns" order="110" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加涉水损失险不计免赔" code="NcfWadingIns" order="120" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="WadingIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="涉水免除特约" code="WadingExclusionCla" order="130" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="WadingIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="指定专修厂" code="SpecifyingPlantCla" order="140" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="可选免赔额特约" code="OptionalDeductiblesCla" order="150" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="200" order="1">200</option>
+            <option value="300" order="2">300</option>
+            <option value="500" order="3">500</option>
+            <option value="1000" order="4">1000</option>
+            <option value="0" order="5">不投保</option>
+        </value>
+    </item>
+
+    <item name="多次事故免赔特约" code="AccidentDeductiblesCla" order="160" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="新增设备损失险" code="NewEquipmentIns" order="170" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加新增设备损失险不计免赔" code="NcfNewEquipmentIns" order="180" inputType="checkbox" type="附加险" range="车辆保障" dependsOn="NewEquipmentIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="随车行李物品损失保险" code="LossOfBaggageIns" order="190" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="机动车停驶损失险" code="VehicleSuspendedIns" order="200" inputType="select" type="附加险" range="车辆保障" dependsOn="VehicleDemageIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="车碰车损失险" code="CarToCarDamageIns" order="210" inputType="select" type="主险" range="车辆保障" dependsOn="" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="第三者责任险" code="ThirdPartyIns" order="220" inputType="select" type="主险" range="责任保障" dependsOn="" must="0">
+        <value>
+            <option value="50000" order="1">5万</option>
+            <option value="100000" order="2">10万</option>
+            <option value="150000" order="3">15万</option>
+            <option value="200000" order="4">20万</option>
+            <option value="300000" order="5">30万</option>
+            <option value="500000" order="6">50万</option>
+            <option value="1000000" order="7">100万</option>
+            <option value="0" order="8">不投保</option>
+        </value>
+    </item>
+    <item name="附加第三者责任险不计免赔" code="NcfThirdPartyIns" order="230" inputType="checkbox" type="附加险" range="责任保障" dependsOn="ThirdPartyIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="车上货物责任险" code="GoodsOnVehicleIns" order="240" inputType="select" type="附加险" range="责任保障" dependsOn="ThirdPartyIns" must="0">
+        <value>
+            <option value="1" order="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+    <item name="附加车上货物责任险不计免赔" code="NcfGoodsOnVehicleIns" order="250" inputType="checkbox" type="附加险" range="责任保障" dependsOn="GoodsOnVehicleIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="司机责任险" code="DriverIns" order="260" inputType="select" type="主险" range="责任保障" dependsOn="" must="0">
+        <value>
+            <option value="5000" order="1">0.5万</option>
+            <option value="10000" order="2">1万</option>
+            <option value="20000" order="3">2万</option>
+            <option value="30000" order="4">3万</option>
+            <option value="40000" order="5">4万</option>
+            <option value="50000" order="6">5万</option>
+            <option value="100000" order="7">10万</option>
+            <option value="150000" order="8">15万</option>
+            <option value="200000" order="9">20万</option>
+            <option value="0" order="10">不投保</option>
+        </value>
+    </item>
+    <item name="附加司机责任险不计免赔" code="NcfDriverIns" order="270" inputType="checkbox" type="附加险" range="责任保障" dependsOn="DriverIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="乘客责任险" code="PassengerIns" order="280" inputType="select" type="主险" range="责任保障" dependsOn="" must="0">
+        <value>
+            <option value="5000" order="1">0.5万</option>
+            <option value="10000" order="2">1万</option>
+            <option value="20000" order="3">2万</option>
+            <option value="30000" order="4">3万</option>
+            <option value="40000" order="5">4万</option>
+            <option value="50000" order="6">5万</option>
+            <option value="100000" order="7">10万</option>
+            <option value="150000" order="8">15万</option>
+            <option value="200000" order="9">20万</option>
+            <option value="0" order="10">不投保</option>
+        </value>
+    </item>
+    <item name="附加乘客责任险不计免赔" code="NcfPassengersIns" order="290" inputType="checkbox" type="附加险" range="责任保障" dependsOn="PassengerIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="附加车上人员责任险不计免赔" code="NcfDriverPassengerIns" order="300" inputType="checkbox" type="附加险" range="责任保障" dependsOn="DriverIns,PassengerIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="教练车特约" code="TrainnigCarCla" order="310" inputType="checkbox" type="附加险" range="车辆保障,责任保障" dependsOn="VehicleDemageIns,ThirdPartyIns,DriverIns,PassengerIns" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="交强险" code="VehicleCompulsoryIns" order="320" inputType="checkbox" type="" range="" dependsOn="" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+
+    <item name="车船税" code="VehicleTax" order="330" inputType="checkbox" type="" range="" dependsOn="" must="0">
+        <value>
+            <option value="1" order="1" default="1">投保</option>
+            <option value="0" order="2">不投保</option>
+        </value>
+    </item>
+</items>

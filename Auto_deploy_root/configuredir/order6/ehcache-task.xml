@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ehcache name="PublicCache">
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="1209600"
+            timeToLiveSeconds="1209600"
+            overflowToDisk="true"
+            diskSpoolBufferSizeMB="30"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"/>
+    <cache name="QuoteTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="InsureTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="EdiTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="VerifyTaskCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="SerializationCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="1200"
+           timeToLiveSeconds="0"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+
+    <cache name="VehicleEnquiryCache"
+           maxElementsInMemory="1000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="604800"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="multiQuote"
+           maxElementsInMemory="10000"
+           maxElementsOnDisk="0"
+           eternal="false"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="604800"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <cache name="TaskBeanCache"
+           maxElementsInMemory="1000"
+           eternal="false"
+           timeToIdleSeconds="1209600"
+           timeToLiveSeconds="1209600"
+           memoryStoreEvictionPolicy="LFU">
+        <terracotta consistency="strong"/>
+    </cache>
+    <terracottaConfig url="10.143.92.140:9510"/>
+</ehcache>

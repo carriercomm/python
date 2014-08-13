@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itemCode-mapping>
+    <items>
+    	
+    <item code="platform.noClaimDiscountCoefficient" metadataName="无赔款优待系数"/>
+    
+    <item code="platform.noClaimDiscountCoefficientReasons" metadataName="无赔款折扣浮动原因"/>
+    
+    <item code="platform.commercial.claimTimes" metadataName="平台商业险理赔次数"/>
+    
+    <item code="platform.commercial.lastClaimSum" metadataName="平台商业险理赔金额"/>
+    
+    <item code="platform.loyalty" metadataName="平台客户忠诚度系数"/>
+    
+    <item code="platform.loyaltyReasons" metadataName="客户忠诚度原因"/>
+    
+    <item code="platform.compulsory.claimRate" metadataName="交强险理赔系数"/>
+    
+    <item code="platform.compulsory.claimRateReasons" metadataName="交强险浮动原因"/>
+    
+    <item code="platform.compulsory.claimTimes" metadataName="平台交强险理赔次数"/>
+    
+    <item code="platform.carPrice" metadataName="平台车价（部分地区）"/>
+    
+    <item code="application.commercial.claimTimes" metadataName="上年商业险理赔次数"/>
+    
+    <item code="application.commercial.lastClaimSum" metadataName="上年商业险理赔金额"/>
+    
+    <item code="application.firstInsureType" metadataName="投保类型"/>
+    
+    <item code="application.compulsory.claimTimes" metadataName="上年交强险理赔次数"/>
+    
+    
+    </items>
+</itemCode-mapping>

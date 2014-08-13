@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<jiraclient>
+    <!--=============================服务端地址信息================================-->
+    <jiraConfig>
+        <!--  <url>http://10.68.14.221:8180/jira/jiraissueservlet</url>-->
+        <url>http://task5.baoxian.in/jira/jiraissueservlet</url>
+        <username>jira_order</username>
+        <jiraRouteUrl>http://task5.baoxian.in/jiraRouteServer/jiraRouteSearch</jiraRouteUrl>
+    </jiraConfig>
+
+    <!--=============================client 配置项================================-->
+    <clientConfig name="policySync">
+        <!--ICE STORM-->
+        <ice enable="true">
+            <!--<configFilePath>D:/work/config/root/development/project/dataTransform/iceStorm.config</configFilePath>-->
+			<configFilePath>/data/www/ins_share/config/iceStorm.config</configFilePath>
+        </ice>
+        <!--任务调度-->
+        <taskDispath enable="false">
+            <xmppConfigFilePath></xmppConfigFilePath>
+            <processor></processor>
+            <jiraJid></jiraJid>
+        </taskDispath>
+        <!--key mapping-->
+        <keyMapping>
+            <systemKeyMappingFilePath></systemKeyMappingFilePath>
+        </keyMapping>
+    </clientConfig>
+
+    <!--=============================监听器================================-->
+    <!--expectclassname固定为com.baoxian.jira.task.TaskBean-->
+    <listeners>
+		<listener servicename="insurancePolicy-upload-listener"
+					  expectclassname="com.baoxian.jira.task.TaskBean"
+					  processor="com.baoxian.coreDBSync.dataTransform.listener.InsurancePolicyUploadEventReceiver"
+					  listenTopic="车险录单任务[任务已创建(录单任务已创建)">
+		</listener>
+    </listeners>
+</jiraclient>

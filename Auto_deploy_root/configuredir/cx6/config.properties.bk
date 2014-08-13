@@ -1,0 +1,14 @@
+rule.receiver_ip = 10.143.78.177
+#rule.receiver_port=9999
+#rule.receiver_Calculator_serviceName=CalculatorReceiver
+#rule.receiver_PriceRule_serviceName=PriceRuleReceiver
+rule.akka.config.path=/data/www/ins_share/config/cx/akka.conf
+cx.search.keynoise=/data/www/ins_share/config/cx/carnoise
+# unit:minutes
+clear_cache_interval = 10
+car_missing_url = http://cdm.baoxian.in:8080/model/probleModel.lmx
+#use_carmissing_intf = false
+use_carmissing_intf = true
+carcommon_interval = 1
+car_common_url = http://cdm.baoxian.in/model/commonModel.lmx
+sch_config_path = /data/www/ins_share/config/cx/schconfig.xml

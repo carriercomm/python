@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<jiraclient>
+    <!--=============================服务端地址信息================================-->
+    <jiraConfig>
+        <url>http://task5.baoxian.in/jira/jiraissueservlet</url>
+        <username>jira_cm3</username>
+        <jiraRouteUrl>http://task5.baoxian.in/jiraRouteServer/jiraRouteSearch</jiraRouteUrl>
+    </jiraConfig>
+
+    <!--<remoteproviders>-->
+    <!--<provider>-->
+    <!--<key>net</key>-->
+    <!--<class>com.baoxian.jira.common.JiraRemoteImpl</class>-->
+    <!--<properties>-->
+    <!--<url>http://task.baoxan.net:8080/jiraissueservlet</url>-->
+    <!--<username>mayi</username>-->
+    <!--</properties>-->
+    <!--</provider>-->
+    <!--<provider>-->
+    <!--<key>org</key>-->
+    <!--<class>com.baoxian.jira.common.JiraRemoteImpl</class>-->
+    <!--<properties>-->
+    <!--<url>http://task.baoxan.org:8080/jiraissueservlet</url>-->
+    <!--<username>mayi</username>-->
+    <!--</properties>-->
+    <!--</provider>-->
+    <!--<provider>-->
+    <!--<key>com</key>-->
+    <!--<class>com.baoxian.jira.common.JiraRemoteImpl</class>-->
+    <!--<properties>-->
+    <!--<url>http://task.baoxian.in/jira/jiraissueservlet</url>-->
+    <!--<username>mayi</username>-->
+    <!--</properties>-->
+    <!--</provider>-->
+    <!--<provider>-->
+    <!--<key>test</key>-->
+    <!--<class>com.baoxian.jira.common.JiraRemoteImpl</class>-->
+    <!--<properties>-->
+    <!--<url>http://10.68.14.221:8180/jira/jiraissueservlet</url>-->
+    <!--<username>admin</username>-->
+    <!--</properties>-->
+    <!--</provider>-->
+    <!--</remoteproviders>-->
+
+    <!--=============================client 配置项================================-->
+    <clientConfig name="cm">
+        <!--ICE STORM-->
+        <ice enable="false">
+            <configFilePath></configFilePath>
+        </ice>
+        <!--任务调度-->
+        <taskDispath enable="false">
+            <xmppConfigFilePath></xmppConfigFilePath>
+            <processor></processor>
+            <jiraJid></jiraJid>
+        </taskDispath>
+        <!--key mapping-->
+        <keyMapping>
+            <systemKeyMappingFilePath></systemKeyMappingFilePath>
+        </keyMapping>
+    </clientConfig>
+
+    <!--=============================监听器================================-->
+    <!--expectclassname固定为com.baoxian.jira.task.TaskBean-->
+    <listeners>
+        <!--<listener servicename="myservice"-->
+        <!--expectclassname="com.baoxian.jira.task.TaskBean"-->
+        <!--processor="com.baoxian.jira.common.jiratestmsg"-->
+        <!--listenTopic="BBCAR{多方初审任务[未完成(IssueUpdated),处理中(人工)(转呼叫处理)],车险核保任务[未完成(IssueUpdated),处理中(人工)(转呼叫处理,转业管处理)],车险报价任务[报成状态(IssueUpdated)]}">-->
+        <!--<properties>-->
+        <!--<servicename></servicename>-->
+        <!--<port></port>-->
+        <!--</properties>-->
+        <!--</listener>-->
+    </listeners>
+
+    <!--=============================Action 映射================================-->
+    <!--<jiraActions>-->
+    <!--<action type="1" jiraactionname="Open"/>-->
+    <!--<action type="2" jiraactionname="Close Issue"/>-->
+    <!--<action type="3" jiraactionname="Reopen Issue"/>-->
+    <!--<action type="4" jiraactionname="Start Progress"/>-->
+    <!--<action type="5" jiraactionname="Reopened"/>-->
+    <!--<action type="6" jiraactionname="Closed"/>-->
+    <!--<action type="301" jiraactionname="Stop Progress"/>-->
+    <!--<action type="701" jiraactionname="Close Issue"/>-->
+    <!--</jiraActions>-->
+    <jiraActions>
+        <action type="2_auto_start" jiraactionname="开始执行"/>
+        <action type="c_human_start" jiraactionname="人工任务处理"/>
+        <action type="E_human_auto_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="D_human_reopen" jiraactionname="需修正或补充报价信息"/>
+        <action type="B_human_quote_success" jiraactionname="报价成功"/>
+        <action type="C_human_quote_fail" jiraactionname="无法报价"/>
+        <action type="A_human_insured" jiraactionname="直接核保通过"/>
+        <action type="3_auto_restart" jiraactionname="执行失败重新调度"/>
+        <action type="4_auto_to_human" jiraactionname="执行失败转人工处理"/>
+        <action type="5_need_verify" jiraactionname="需修正或补充报价信息"/>
+        <action type="6_auto_need_verify_data" jiraactionname="补充校验信息"/>
+        <action type="8_auto_quote_success" jiraactionname="报价成功"/>
+        <action type="9_auto_quote_fail" jiraactionname="无法报价"/>
+        <action type="7_auto_insured" jiraactionname="直接核保通过"/>
+        <action type="d_reopen" jiraactionname="重新调度自动执行"/>
+        <action type="b_close" jiraactionname="关闭报价"/>
+        <action type="human_check" jiraactionname="初审"/>
+        <action type="human_check_success" jiraactionname="初审通过"/>
+        <action type="human_confirm_quote" jiraactionname="人工干预报价"/>
+    </jiraActions>
+</jiraclient>

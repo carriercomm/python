@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+    <item code="car.specific.license" name="车牌" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="car.specific.vin" name="车辆识别代号" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="car.specific.engineNum" name="发动机号" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="application.lastCommercialPoliceyNum" name="上年商业险保单号" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="application.lastComulsoryPoliceyNum" name="上年交强险保单号" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="insured.name" name="被保人姓名" type="text" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+        </validations>
+    </item>
+    <item code="car.specific.licenseType" name="号牌种类" type="select" style="" inputType="" hint="">
+        <validations>
+            <validation name="visiable" value="1" message=""></validation>
+            <validation name="readonly" value="0" message=""></validation>
+            <validation name="mustModified" value="" message=""></validation>
+            <validation name="canModified" value="" message=""></validation>
+            <validation name="options" value=":-请选择-,1:大型汽车,2:小型汽车,3:使馆汽车,4:领馆汽车,5:境外汽车,6:外籍汽车,7:两轮三轮摩托车,8:轻便摩托车,9:使馆摩托车,10:领馆摩托车,11:境外摩托车,12:外籍摩托车,13:农用运输车,14:拖拉机,15:挂车,16:教练汽车,17:教练摩托车,18:试验汽车,19:试验摩托车,20:临时入境汽车,21:临时入境摩托车,22:临时行驶车,23:警用汽车,24:警用摩托车,31:武警,32:军队,99:其他" message=""></validation>
+        </validations>
+    </item>
+</items>

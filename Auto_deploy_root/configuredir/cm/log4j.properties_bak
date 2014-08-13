@@ -1,0 +1,74 @@
+log4j.rootLogger=error,console
+log4j.appender.stacktrace=org.apache.log4j.varia.NullAppender	
+
+log4j.appender.console=org.apache.log4j.ConsoleAppender
+log4j.appender.console.layout=org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss}: - %c -%-4r [%t] %-5p %x - %m%n
+
+
+
+### 输出到日志文件 ###
+log4j.appender.cm_info = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.cm_info.File = /data/log/resin/info/cm_info.log
+log4j.appender.cm_info.MaxFileSize=150MB
+log4j.appender.cm_info.MaxBackupIndex=10
+log4j.appender.cm_info.Append = true
+## 输出DEBUG级别以上的日志
+log4j.appender.cm_info.Threshold = INFO
+log4j.appender.cm_info.layout = org.apache.log4j.PatternLayout
+log4j.appender.cm_info.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}: - %c -%-4r [%t] %-5p %x - %m%n
+
+
+### 保存异常信息到单独文件 ###
+log4j.appender.cm_error = org.apache.log4j.DailyRollingFileAppender
+## 异常日志文件名
+log4j.appender.cm_error.File = /data/log/resin/error/cm_error.log
+log4j.appender.cm_error.MaxFileSize=150MB
+log4j.appender.cm_error.MaxBackupIndex=10
+log4j.appender.cm_error.Append = true
+## 只输出ERROR级别以上的日志!!!
+log4j.appender.cm_error.Threshold = ERROR
+log4j.appender.cm_error.layout = org.apache.log4j.PatternLayout
+log4j.appender.cm_error.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}: - %c -%-4r [%t] %-5p %x - %m%n
+
+
+### 输出到日志文件 ###
+log4j.appender.cm_jira = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.cm_jira.File = /data/log/resin/debug/cm_jira.log
+log4j.appender.cm_jira.MaxFileSize=150MB
+log4j.appender.cm_jira.MaxBackupIndex=10
+## 输出DEBUG级别以上的日志
+log4j.appender.cm_jira.Threshold = INFO
+log4j.appender.cm_jira.layout = org.apache.log4j.PatternLayout
+log4j.appender.cm_jira.layout.ConversionPattern = %d{yyyy-MM-dd HH:mm:ss}: - %c -%-4r [%t] %-5p %x - %m%n
+
+
+
+
+log4j.appender.dp_system_api=org.apache.log4j.RollingFileAppender
+log4j.appender.dp_system_api.File=/data/log/resin/debug/dp_system_api.log
+log4j.appender.dp_system_api.MaxFileSize=50MB
+log4j.appender.dp_system_api.MaxBackupIndex=10
+log4j.appender.dp_system_api.Append=true
+log4j.appender.dp_system_api.Threshold=DEBUG
+log4j.appender.dp_system_api.layout=org.apache.log4j.PatternLayout
+log4j.appender.dp_system_api.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss}: %p %t %c - %m%n
+
+
+
+log4j.logger.com.baoxian=INFO,cm_info,cm_error
+log4j.logger.grails.app=INFO,cm_info,cm_error
+log4j.logger.com.baoxian.jira=INFO,cm_jira
+
+log4j.logger.grails.app.filters.com.baoxian.b2b.api.filter.ActionRequestMonitorFilters=debug,console
+
+log4j.logger.com.baoxian.carmodel.api.CarModelApi=debug,dp_system_api
+log4j.logger.com.baoxian.provider.inscar.api.impl.CipProviderAkkaClientWorker=debug,dp_system_api
+log4j.logger.com.baoxian.rule.client.api.RuleEngineApi=debug,dp_system_api
+
+
+
+log4j.logger.StackTrace=OFF,stacktrace
+
+#使用该配置要执行一下脚本，去创建存放日志的目录
+#cd /data/log/resin/ && mkdir info && mkdir error && mkdir debug && chown -R www.www *

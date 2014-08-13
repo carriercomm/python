@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<excelConfig>
+    <row writeStartIndex="1" readStartIndex="1"/>
+
+    <cells>
+        <cell index="0" name="comCode" text="机构编码"/>
+        <cell index="1" name="fullName" text="机构名称"/>
+        <cell index="2" name="cityCode" text="地市编码"/>
+    </cells>
+
+    <mappings>
+        <mapping name="ldap">
+            <mapper cellName="comCode" targetRead="code">
+                <targetWrite name="destinationIndicator"/>
+            </mapper>
+            <mapper cellName="fullName" targetRead="name">
+                <targetWrite name="description"/>
+            </mapper>
+            <mapper cellName="cityCode" targetRead="city">
+                <targetWrite name="l"/>
+            </mapper>
+        </mapping>
+        <mapping name="database">
+            <mapper cellName="comCode">
+                <targetWrite name="comCode"/>
+            </mapper>
+            <mapper cellName="cityCode">
+                <targetWrite name="city" valueExpression="com.baoxian.datatype.base.domain.Region.get(%v)"/>
+            </mapper>
+        </mapping>
+    </mappings>
+
+</excelConfig>

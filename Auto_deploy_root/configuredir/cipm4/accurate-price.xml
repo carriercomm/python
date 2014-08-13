@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <accurate_price_groups value="1" name="精确报价">
+        <accurate_price_group value="1" name="">
+            <accurate_price_groupElem value="TaxCode" name="税务机关编码"></accurate_price_groupElem>
+        </accurate_price_group>
+    </accurate_price_groups>
+
+    <underwriters_groups value="2" name="提交核保">
+        <underwriters_group value="1" name="被保险人">
+            <underwriters_groupElem value="InsName" name="被保险人姓名"></underwriters_groupElem>
+            <underwriters_groupElem value="InsCerType" name="证件类型"></underwriters_groupElem>
+            <underwriters_groupElem value="InsCerCode" name="证件号码"></underwriters_groupElem>
+            <underwriters_groupElem value="InsPhone" name="手机"></underwriters_groupElem>
+            <underwriters_groupElem value="InsEmail" name="e-mail"></underwriters_groupElem>
+        </underwriters_group>
+
+        <underwriters_group value="2" name="投保人">
+            <underwriters_groupElem value="applName" name="投保人姓名"></underwriters_groupElem>
+            <underwriters_groupElem value="applCerType" name="证件类型"></underwriters_groupElem>
+            <underwriters_groupElem value="applCerCode" name="证件号码"></underwriters_groupElem>
+            <underwriters_groupElem value="applPhone" name="手机"></underwriters_groupElem>
+            <underwriters_groupElem value="applEmail" name="e-mail"></underwriters_groupElem>
+        </underwriters_group>
+
+        <underwriters_group value="3" name="权益索赔人">
+            <underwriters_groupElem value="claimName" name="权益索赔人姓名"></underwriters_groupElem>
+            <underwriters_groupElem value="claimCerType" name="证件类型"></underwriters_groupElem>
+            <underwriters_groupElem value="claimCerCode" name="证件号码"></underwriters_groupElem>
+            <underwriters_groupElem value="claimPhone" name="手机"></underwriters_groupElem>
+            <underwriters_groupElem value="claimEmail" name="e-mail"></underwriters_groupElem>
+        </underwriters_group>
+
+        <underwriters_group value="4" name="配送信息">
+            <underwriters_groupElem value="orderName" name="收件人姓名"></underwriters_groupElem>
+            <underwriters_groupElem value="orderAddress" name="收件人地址"></underwriters_groupElem>
+            <underwriters_groupElem value="orderPhone" name="手机"></underwriters_groupElem>
+            <underwriters_groupElem value="orderEmail" name="e-mail"></underwriters_groupElem>
+            <underwriters_groupElem value="orderRemark" name="备注"></underwriters_groupElem>
+        </underwriters_group>
+
+        <underwriters_group value="5" name="影像资料上传">
+            <underwriters_groupElem value="ID" name="身份证"></underwriters_groupElem>
+            <underwriters_groupElem value="drivingPermit" name="行驶证"></underwriters_groupElem>
+            <underwriters_groupElem value="lastYearPolicy" name="上年度保单"></underwriters_groupElem>
+            <underwriters_groupElem value="vehiclePhoto" name="车辆照片"></underwriters_groupElem>
+        </underwriters_group>
+    </underwriters_groups>
+
+ </data>
