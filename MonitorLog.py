@@ -17,11 +17,13 @@ Created by Liangsh on 2014-08-13.
 
 import sys
 import os
+import datetime
 import getopt
 import subprocess
 import time
 import codecs
-#import winsound
+reload(sys)
+sys.setdefaultencoding('utf8')
 import smtplib
 from email.mime.text import MIMEText
 from email.Header import Header
@@ -110,7 +112,8 @@ def main():
         for keyword in keywordMap:
             if line.find(keyword) > -1:
                 #winsound.PlaySound(keywordMap[keyword], winsound.SND_NODEFAULT)
-				send_mail(mailto_list,mail_subject,"一区tc故障")
+                print "haha"
+	        send_mail(mailto_list,mail_subject,"一区tc故障")
         #time.sleep(0.01)
     return 0
   
