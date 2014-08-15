@@ -36,7 +36,8 @@ mail_port='465'
 mail_user="2081276696"
 mail_pass="cninsure2013"
 mail_postfix="qq.com"
-mail_subject='一区TC监控-'+str(datetime.date.today().strftime('%Y%m%d'))
+#mail_subject='一区TC监控-'+str(datetime.date.today().strftime('%Y%m%d'))
+mail_subject=str(datetime.date.today().strftime('%Y%m%d'))
 
 ABSPATH = os.path.dirname(os.path.abspath(__file__))
 MONITERCONF = 'moniter_keyword.txt' #utf8 file
@@ -113,7 +114,7 @@ def main():
             if line.find(keyword) > -1:
                 #winsound.PlaySound(keywordMap[keyword], winsound.SND_NODEFAULT)
                 print "haha"
-	        send_mail(mailto_list,mail_subject,"一区tc故障")
+	        send_mail(mailto_list,keywordMap[keyword]+mail_subject,line)
         #time.sleep(0.01)
     return 0
   
