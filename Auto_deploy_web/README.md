@@ -1,9 +1,9 @@
 1、登陆界面
 - 
-![image](https://github.com/suker413/python/tree/master/Auto_deploy_web/screenshots/login.png)
+![](https://github.com/suker413/python/tree/master/Auto_deploy_web/screenshots/login.png)
 2、系统欢迎界面
 - 
-![image](https://github.com/suker413/python/tree/master/Auto_deploy_web/screenshots/sysinfo.png)
+![image](https://github.com/suker413/python/master/Auto_deploy_web/screenshots/sysinfo.png)
 3、用户管理界面
 - 
 ![image](https://github.com/suker413/python/tree/master/Auto_deploy_web/screenshots/user.png)
