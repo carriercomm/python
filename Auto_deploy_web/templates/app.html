@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/style.css" />
+
+
+<script type="text/javascript">
+function toggle(source) {
+  //checkboxes = document.getElementsByName('node[]');
+  //checkboxes = document.getElementsBclassname('apps');
+  checkboxes = document.getElementsByClassName('apps');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+<script type="text/javascript">
+function toggle2(source) {
+  //checkboxes = document.getElementsByName('node[2]');
+  checkboxes = document.getElementsByClassName('apps2');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+<script type="text/javascript">
+function toggle3(source) {
+  //checkboxes = document.getElementsByName('node[3]');
+  checkboxes = document.getElementsByClassName('apps3');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+<script type="text/javascript">
+function toggle4(source) {
+  //checkboxes = document.getElementsByName('node[4]');
+  checkboxes = document.getElementsByClassName('apps4');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+<script type="text/javascript">
+function toggle5(source) {
+  //checkboxes = document.getElementsByName('node[5]');
+  checkboxes = document.getElementsByClassName('apps5');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+<script type="text/javascript">
+function toggle6(source) {
+  //checkboxes = document.getElementsByName('node[6]');
+  checkboxes = document.getElementsByClassName('apps6');
+  for(var i=0, n=checkboxes.length;i<n;i++) {
+    checkboxes[i].checked = source.checked;
+  }
+}
+    </script>
+
+
+</head>
+<body>
+<form name="dataForm" action="" method="post" class="definewidth m20" >
+<style>
+ul{padding:0; margin:0;}
+li{ list-style:none;padding:0;}
+li li{ display:inline-block;}
+</style>
+<!--table class="table table-bordered table-hover definewidth m10"-->
+<table class="table table-striped">
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">一区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='cm' value='cm' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='go2' value='go2' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='cx' value='cx' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='cipm' value='cipm' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='order' value='order' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='radar' value='radar' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='rb' value='rb' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='renewal' value='renewal' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='engine' value='engine' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='messagePush' value='messagePush' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='dataTransform' value='dataTransform' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps' name='task-dispatcher' value='task-dispatcher' />
+            task-dispatcher</label></li>				
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">二区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle2(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2 'name='cm2' value='cm2' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='carbiz2' value='carbiz2' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='cx2' value='cx2' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='cipm2' value='cipm2' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='order2' value='order2' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='radar2' value='radar2' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='rb2' value='rb2' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='renewal2' value='renewal2' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='engine2' value='engine2' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='messagePush2' value='messagePush2' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='dataTransform2' value='dataTransform2' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps2' name='task-dispatcher2' value='task-dispatcher2' />
+            task-dispatcher</label></li>				
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">三区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle3(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='cm3' value='cm3' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='carbiz3' value='carbiz3' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='cx3' value='cx3' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='cipm3' value='cipm3' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='order3' value='order3' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='radar3' value='radar3' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='rb3' value='rb3' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='renewal3' value='renewal3' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='engine3' value='engine3' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='messagePush3' value='messagePush3' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='dataTransform3' value='dataTransform3' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps3' name='task-dispatcher3' value='task-dispatcher3' />
+            task-dispatcher</label></li>				
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">四区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle4(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='cm4' value='cm4' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='carbiz4' value='carbiz4' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='cx4' value='cx4' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='cipm4' value='cipm4' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='order4' value='order4' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='radar4' value='radar4' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='rb4' value='rb4' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='renewal4' value='renewal4' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='engine4' value='engine4' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='messagePush4' value='messagePush4' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='dataTransform4' value='dataTransform4' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps4' name='task-dispatcher4' value='task-dispatcher4' />
+            task-dispatcher</label></li>				
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">五区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle5(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='cm5' value='cm5' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='carbiz5' value='carbiz5' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='cx5' value='cx5' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='cipm5' value='cipm5' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='order5' value='order5' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='radar5' value='radar5' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='rb5' value='rb5' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='renewal5' value='renewal5' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='engine5' value='engine5' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='messagePush5' value='messagePush5' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='dataTransform5' value='dataTransform5' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps5' name='task-dispatcher5' value='task-dispatcher5' />
+            task-dispatcher</label></li>				
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td  class="tableleft" width="100px" style="vertical-align:middle">六区应用</td>
+        <td> <ul class="blockUl">
+    <li>
+      <label class='checkbox inline'>
+        <input type='checkbox' onClick="toggle6(this)" value='' />
+        全选</label>
+      <ul>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='cm6' value='cm6' />
+            cm</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='carbiz6' value='carbiz6' />
+            go2</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='cx6' value='cx6' />
+            cx</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='cipm6' value='cipm6' />
+            cipm</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='order6' value='order6' />
+            order</label></li>	
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='radar6' value='radar6' />
+            radar</label></li>
+        <li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='rb6' value='rb6' />
+            rb</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='renwal6' value='renewal6' />
+            renewal</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='engine6' value='engine6' />
+            engine</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='messagePush6' value='messagePush6' />
+            messagePush</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='dataTransform6' value='dataTransform6' />
+            dataTransform</label></li>
+		<li>
+          <label class='checkbox inline'>
+            <input type='checkbox' class='apps6' name='task-dispatcher6' value='task-dispatcher6' />
+            task-dispatcher</label></li>
+
+      </ul>
+    </li>
+    
+
+  </ul> </td>
+    </tr> 
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <input type="radio" name="operator" value="deploy" checked="cheched"/>&nbsp;发布 &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="operator" value="rollback" />&nbsp;回滚&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="btn btn-primary" name="'" >&nbsp;执行&nbsp;</button>
+        </td>
+    </tr>
+</table>
+
+</form>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+$def with(output)
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="$config.static/Css/style.css" />
+
+</head>
+<body>
+
+$for item in output:
+    $if 'INFO' in item:
+        <font face="verdana" color="green">$item<br /></font>
+    $elif 'ERROR' in item:
+        <font face="verdana" color="red">$item<br /></font>
+    $else:
+        <font face="verdana" color="blue">$item<br /></font>
+</body>
+</html>
